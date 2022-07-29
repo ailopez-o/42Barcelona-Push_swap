@@ -11,39 +11,68 @@
 /* ************************************************************************** */
 #include "../lib/libft/libft.h"
 #include "../inc/defines.h"
-#include "../inc/listhandle.h"
+#include "../inc/lst_utils.h"
 #include "../inc/print.h"
+#include "../inc/instructions.h"
 #include <stddef.h>
 
-void	ini_stack(t_stack *stack)
+int	short_stack(t_stack *stack_a, t_stack **stack_b)
 {
-	stack = malloc(sizeof(t_stack));
-	free (stack);
-	stack = NULL;
+	t_stack	*new;
+
+	while(stack_a)
+	{
+		new = ft_stacklstnew(stack_a->num);
+        stack_lstadd_back(stack_b, new);
+		stack_a = stack_a->next;
+	}
+	return (1);
 }
 
+int	fill_stack(t_stack **stack, char **values)
+{
+	int	i;
+    t_stack	*new;
+
+	i = 1;
+    while (values[i])
+    {
+		new = ft_stacklstnew(ft_atoi(values[i]));
+        stack_lstadd_back(stack, new);
+        i++;
+    }
+	return (1);
+}
 
 int main (int argv, char **argc)
 {
-    int i;
     t_stack	*stack_a;
     t_stack	*stack_b;
-    t_stack	*new;
 
     if (argv < 2)
         return (0);
-    i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
-	new = NULL;
-	ini_stack(stack_b);
-	stack_lstadd_back(&stack_b, new);
-    while (i < argv)
-    {
-		new = ft_stacklstnew(ft_atoi(argc[i]));
-        stack_lstadd_back(&stack_a, new);
-        i++;
-    }
+	fill_stack(&stack_a, argc);
+	short_stack(stack_a, &stack_b);
     print_stack(stack_a, stack_b);
+	execute(SA,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(SB,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(SS,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RA,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RB,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RR,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RRA,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RRB,stack_a,stack_b);
+    print_stack(stack_a, stack_b);
+	execute(RRR,stack_a,stack_b);
+    print_stack(stack_a, stack_b);	
     return (0);
 }

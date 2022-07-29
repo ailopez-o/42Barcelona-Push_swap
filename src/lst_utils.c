@@ -65,3 +65,17 @@ void	stack_lstfree(t_stack **lst)
 	}
 	*lst = NULL;
 }
+
+int	stack_is_sorted(t_stack *first)
+{
+	t_stack *stack;
+
+	stack = first;
+	while (stack->next)
+	{
+		if (stack->num >= stack->next->num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}

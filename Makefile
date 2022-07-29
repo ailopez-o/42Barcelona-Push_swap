@@ -45,7 +45,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES	=	push_swap instructions listhandle print
+SRC_FILES	=	push_swap instructions lst_utils print
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
