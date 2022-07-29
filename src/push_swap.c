@@ -22,7 +22,7 @@ int	short_stack(t_stack *stack_a, t_stack **stack_b)
 
 	while(stack_a)
 	{
-		new = ft_stacklstnew(stack_a->num);
+		new = stack_lstnew(stack_a->num);
         stack_lstadd_back(stack_b, new);
 		stack_a = stack_a->next;
 	}
@@ -37,7 +37,7 @@ int	fill_stack(t_stack **stack, char **values)
 	i = 1;
     while (values[i])
     {
-		new = ft_stacklstnew(ft_atoi(values[i]));
+		new = stack_lstnew(ft_atoi(values[i]));
         stack_lstadd_back(stack, new);
         i++;
     }

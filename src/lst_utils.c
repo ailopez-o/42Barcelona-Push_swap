@@ -1,6 +1,6 @@
 #include "../inc/defines.h"
 
-t_stack	*ft_stacklstnew(int num)
+t_stack	*stack_lstnew(int num)
 {
 	t_stack	*stackitem;
 
