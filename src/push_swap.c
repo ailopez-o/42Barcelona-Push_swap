@@ -11,19 +11,39 @@
 /* ************************************************************************** */
 #include "../lib/libft/libft.h"
 #include "../inc/defines.h"
+#include "../inc/listhandle.h"
+#include "../inc/print.h"
 #include <stddef.h>
+
+void	ini_stack(t_stack *stack)
+{
+	stack = malloc(sizeof(t_stack));
+	free (stack);
+	stack = NULL;
+}
+
 
 int main (int argv, char **argc)
 {
     int i;
-    //int value;
-    //t_stack	*stack_a;
-    //t_list	*stack_b;
+    t_stack	*stack_a;
+    t_stack	*stack_b;
+    t_stack	*new;
 
     if (argv < 2)
         return (0);
     i = 1;
-    i++;
-    argc[1] = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
+	new = NULL;
+	ini_stack(stack_b);
+	stack_lstadd_back(&stack_b, new);
+    while (i < argv)
+    {
+		new = ft_stacklstnew(ft_atoi(argc[i]));
+        stack_lstadd_back(&stack_a, new);
+        i++;
+    }
+    print_stack(stack_a, stack_b);
     return (0);
 }
