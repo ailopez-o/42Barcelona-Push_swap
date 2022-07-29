@@ -1,3 +1,5 @@
 *.d
 push_swap
 .vscode/
+*.o
+obj/
