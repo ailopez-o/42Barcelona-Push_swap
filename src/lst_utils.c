@@ -2,15 +2,15 @@
 
 t_stack	*stack_lstnew(int num)
 {
-	t_stack	*stackitem;
+	t_stack	*new;
 
-	stackitem = malloc (sizeof(t_stack));
-	if (stackitem == NULL)
+	new = malloc (sizeof(t_stack));
+	if (new == NULL)
 		return (NULL);
-	stackitem->num = num;
-	stackitem->next = NULL;
-    stackitem->pre = NULL;
-	return (stackitem);
+	new->num = num;
+	new->next = NULL;
+	new->pre = NULL;
+	return (new);
 }
 
 t_stack	*stack_lstlast(t_stack *lst)
