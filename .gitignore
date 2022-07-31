@@ -4,3 +4,4 @@ push_swap
 *.o
 obj/
 *.a
+*.pdf

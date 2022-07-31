@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/31 18:04:59 by aitoraudi         #+#    #+#             */
+/*   Updated: 2022/07/31 18:05:02 by aitoraudi        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../inc/defines.h"
 
 t_stack	*stack_lstnew(int num)
@@ -20,6 +31,15 @@ t_stack	*stack_lstlast(t_stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+void	stack_lstadd_front(t_stack **lst, t_stack *new)
+{
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }
 
 void	stack_lstadd_back(t_stack **lst, t_stack *new)
@@ -68,7 +88,7 @@ void	stack_lstfree(t_stack **lst)
 
 int	stack_is_sorted(t_stack *first)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = first;
 	while (stack->next)
