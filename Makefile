@@ -28,7 +28,11 @@ INC		 		:= inc/
 LIB				:= lib/
 LIBFT_DIR		:= $(LIB)libft/
 LIBFT			:= $(LIBFT_DIR)libft.a
-HEADER 			:= -I$(INC) -I$(LIBFT_DIR)
+HEADER 			:= -I$(INC) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
+MINILIBX_DIR	:= $(LIB)miniliblx/minilibx_macos/
+MINILIBX		:= $(MINILIBX_DIR)libmlx.a
+MINILIBXCC		:= -I mlx -L $(MINILIBX_DIR) -lmlx
+OPENGL			:= -framework OpenGL -framework AppKit
 
 
 # Colors
@@ -45,7 +49,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab
+SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab gui
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -58,10 +62,10 @@ OBJF		=	.cache_exists
 all:	$(NAME)
 			
 -include 	${DEPS}
-$(NAME):	$(LIBFT) $(OBJ)
+$(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 			make -sC $(LIBFT_DIR)			
-			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) -o $(NAME)		
-			@echo "👉 $(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) -o $(NAME) $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
+			@echo "👉 $(BLUE)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
 			@echo "$(GREEN)✨ push_swap compiled!$(DEF_COLOR)"
 
 			
@@ -79,16 +83,24 @@ $(OBJF):
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"	
+
+$(MINILIBX):
+	@make -C $(MINILIBX_DIR)
+	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"	
 		
 clean:
 			@make clean -sC $(LIBFT_DIR)
 			@echo "$(CYAN)Libft object and dependency files cleaned.$(DEF_COLOR)"
+			@make clean -C $(MINILIBX_DIR)
+			@echo "$(CYAN)Minilibx object files cleaned.$(DEF_COLOR)"	
 			$(RM) -rf $(OBJ_DIR)
 			@echo "$(CYAN)push_swap object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			$(RM) -f $(NAME)
 			@echo "$(CYAN)push_swap executable files cleaned!$(DEF_COLOR)"			
+			$(RM) -f $(MINILIBX_DIR)libmlx.a
+			@echo "$(CYAN)libmlx.a lib cleaned!$(DEF_COLOR)"			
 			$(RM) -f $(LIBFT_DIR)libft.a
 			@echo "$(CYAN)libft.a lib cleaned!$(DEF_COLOR)"
 

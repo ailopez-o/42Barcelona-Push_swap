@@ -5,3 +5,4 @@ push_swap
 obj/
 *.a
 *.pdf
+*.psw

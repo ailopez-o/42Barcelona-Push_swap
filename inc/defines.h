@@ -16,17 +16,36 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SA 1
-# define SB 2
-# define SS 3
-# define PA 4
-# define PB 5
-# define RA 6
-# define RB 7
-# define RR 8
-# define RRA 9
-# define RRB 10
-# define RRR 11
+# define WINX 600	
+# define WINY 800
+
+# define KEY_ESC     53
+# define KEY_1       18
+# define KEY_2       19
+# define KEY_3       20
+# define KEY_4       21
+# define KEY_5       23
+# define KEY_6       22
+# define KEY_7       26
+# define KEY_8       28
+# define KEY_9       25
+# define KEY_0       29
+
+# define X 0
+# define Y 1
+# define Z 2
+
+# define ROJO 		0xc1272d
+# define VERDE		0x33cc55
+# define FUCSIA 	0xff255c
+# define AZUL		0x1B8EFA
+# define CARBON		0x151515
+# define WHITE		0xBBBBBB
+# define DISCO		0x9A1F6A
+# define BRICK_RED	0xC2294E
+# define FLAMINGO	0xEC4B27
+# define JAFFA		0xEF8633
+# define SAFFRON	0xF3AF3D
 
 typedef struct		s_stack
 {
@@ -34,4 +53,29 @@ typedef struct		s_stack
 	struct s_stack	*next;
 	struct s_stack	*pre;
 }					t_stack;
+
+typedef struct s_point {
+	float	axis[3];
+	int		color;
+}	t_point;
+
+typedef struct s_bitmap {
+	void	*img;
+	char	*buffer;
+	int		bitxpixel;
+	int		lines;
+	int		endian;
+}	t_bitmap;
+
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;
+}	t_vars;
+
+typedef struct s_meta {
+	t_vars		vars;
+	t_bitmap	bitmap;
+}	t_meta;
+
 #endif
+

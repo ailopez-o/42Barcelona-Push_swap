@@ -9,11 +9,13 @@
 /*   Updated: 2022/07/29 17:56:27 by aitoraudi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../lib/libft/libft.h"
 #include "../inc/defines.h"
+#include "../lib/libft/libft.h"
 #include "../inc/lst_utils.h"
 #include "../inc/print.h"
+#include "../inc/gui.h"
 #include "../inc/instructions.h"
+#include "../lib/miniliblx/minilibx_macos/mlx.h"
 #include <stddef.h>
 
 int	short_stack(t_stack *stack_a, t_stack **stack_b)
@@ -48,14 +50,36 @@ int	main(int argv, char **argc)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_meta	meta;
+
 
 	if (argv < 2)
 		return (0);
+	if (!ft_strncmp(argc[1], "-g", 2))
+	{
+		meta.vars.mlx = mlx_init();
+		meta.vars.win = mlx_new_window(meta.vars.mlx, WINX, WINY, "push_swap - ailopez-");
+		meta.bitmap.img = mlx_new_image(meta.vars.mlx, WINX, WINY);
+		meta.bitmap.buffer = mlx_get_data_addr(meta.bitmap.img, \
+			&meta.bitmap.bitxpixel, &meta.bitmap.lines, &meta.bitmap.endian);
+		generate_background(&meta, CARBON);
+		draw_push_swap(&meta);
+	}
+
 	stack_a = NULL;
 	stack_b = NULL;
 	fill_stack(&stack_a, argc);
 	short_stack(stack_a, &stack_b);
 	print_stack(stack_a, stack_b);
+
+
+	if (!ft_strncmp(argc[1], "-g", 2))
+	{
+		mlx_hook(meta.vars.win, 2, 0, key_press, &meta);	
+		mlx_hook(meta.vars.win, 17, 0, terminate_program, &meta);
+		mlx_loop(meta.vars.mlx);
+	}	
+	/*
 	sa(stack_a);
 	print_stack(stack_a, stack_b);
 	sb(stack_b);
@@ -86,5 +110,6 @@ int	main(int argv, char **argc)
 	print_stack(stack_a, stack_b);
 	pb(&stack_a, &stack_b);
 	print_stack(stack_a, stack_b);
+	*/
 	return (0);
 }
