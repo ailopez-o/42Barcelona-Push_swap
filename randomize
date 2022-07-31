@@ -4,6 +4,7 @@ use strict;
 use List::Util qw( shuffle );
 die "program num max" unless (scalar(@ARGV) == 1);
 my ($num) = @ARGV;
+print "-g ";
 print "@{[ shuffle 1 .. $num ]}\n";
 
 for (my $i = 0; $i < $num; $i++) {

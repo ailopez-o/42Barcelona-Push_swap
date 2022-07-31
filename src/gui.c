@@ -186,3 +186,45 @@ int	key_press(int key, void *param)
 	return (1);
 }
 
+
+int	draw_stack_a(t_stack *stack, t_meta *meta)
+{
+	int	maxvalue;
+	int maxitems;
+	int	barwith;
+	int i;
+	t_point	start;
+	t_point end;
+	t_stack	*stackini;
+
+	stackini = stack;
+	if (!stack)
+		return (0);
+	maxitems = 1;
+	maxvalue = 0;
+	while (stack->next)
+	{
+		stack = stack->next;
+		maxitems++;
+		if (stack->num > maxvalue)
+			maxvalue = stack->num;
+	}
+	barwith = WINY/maxitems;
+	stack = stackini;
+	i = 0;
+	while (stack)
+	{	
+		start.axis[X] = 0;
+		start.axis[Y] = barwith * i;
+		start.color = AZUL;
+		end.axis[X] = ((WINX/2) * stack->num)/maxvalue;
+		end.axis[Y] = barwith * i;
+		end.color = FUCSIA;
+		draw_bar(meta, start, end, barwith);
+		stack = stack->next;
+		i++;
+	}
+	draw_push_swap(meta);
+	return (1);
+}
+
