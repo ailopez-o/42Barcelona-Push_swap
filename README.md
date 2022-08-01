@@ -1,7 +1,7 @@
 # 42-push_swap
 
 <p align="center">
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/aailopez-o/42Barcelona-push_swap?color=lightblue" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/ailopez-o/42Barcelona-push_swap?color=lightblue" />
 	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/ailopez-o/42Barcelona-push_swap?color=critical" />
 	<img alt="Code language count" src="https://img.shields.io/github/languages/count/ailopez-o/42Barcelona-push_swap?color=yellow" />
 	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/ailopez-o/42Barcelona-push_swap?color=blue" />
