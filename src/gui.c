@@ -201,7 +201,7 @@ int	draw_stack_b(t_meta *meta)
 		if (stack->num > maxvalue)
 			maxvalue = stack->num;
 	}
-	barwith = WINY / meta->stack_size;
+	barwith = (WINY) / meta->stack_size;
 	stack = stackini;
 	i = 0;
 	while (stack)
@@ -240,7 +240,7 @@ int	draw_stack_a(t_meta *meta)
 		if (stack->num > maxvalue)
 			maxvalue = stack->num;
 	}
-	barwith = WINY / meta->stack_size;
+	barwith = (WINY) / meta->stack_size;
 	stack = stackini;
 	i = 0;
 	while (stack)
@@ -261,17 +261,27 @@ int	draw_stack_a(t_meta *meta)
 
 int draw_push_swap(t_meta *meta)
 {
+	char	*str;
+	char	*strnumops;
+
 	generate_background(meta, CARBON);
     draw_stack_a(meta);
 	draw_stack_b(meta);
     mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
 	meta->bitmap.img, 0, 0);
+	str = ft_strdup("operations: ");
+	strnumops = ft_itoa(meta->numops);
+	str = ft_strjoin(str, strnumops);
+	mlx_string_put(meta->vars.mlx, meta->vars.win, WINX - 200, WINY - 30, VERDE, str);
+	free (str);
+	free (strnumops);
 	mlx_do_sync(meta->vars.mlx);
     return (1);
 }
 
 int gui(t_meta *meta, char *op)
 {
+	meta->numops++;
 	if (meta->gui)
 		draw_push_swap(meta);
 	if (meta->print)

@@ -34,7 +34,8 @@ int	stack_ini(t_meta *meta, char **values)
 		stack_lstadd_back(&meta->stack_a, new);
 		i++;
 	}
-	meta->stack_size = stack_lstsize(meta->stack_a);	
+	meta->stack_size = stack_lstsize(meta->stack_a);
+	meta->numops = 0;
 	return (1);
 }
 
@@ -54,7 +55,7 @@ int	main(int argv, char **argc)
 	if (argv < 2)
 		return (0);
 	meta.gui = 0;
-	meta.print = 0;	
+	meta.print = 1;	
 	if (!ft_strncmp(argc[1], "-g", 2))
 	{
 		meta.gui = 1;

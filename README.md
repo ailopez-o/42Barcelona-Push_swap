@@ -200,4 +200,13 @@ $>
 - [Least amount of moves](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiLrP6CpdvvAhXmH7kGHZ21CQ0QFjACegQIBBAD&url=https%3A%2F%2Fmedium.com%2F%40jamierobertdawson%2Fpush-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a&usg=AOvVaw2KbZDpsvEv2ry63D-uw2Zx)
 - [Example and Pyviz](https://github.com/anyaschukin/Push_Swap)
 - VIDEO https://www.youtube.com/watch?v=7KW59UO55TQ
-- Sort Algorithm: https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
+- Sort Algorithm: 
+		https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
+		https://zainab-dnaya.medium.com/fastest-push-swap-algorithm-2f510028602b
+		Radix: https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+- Push_Swap testers: 
+https://github.com/lmalki-h/push_swap_tester
+https://github.com/laisarena/push_swap_tester
+https://github.com/LeoFu9487/push_swap_tester
+- Visualizer: https://github.com/o-reo/push_swap_visualizer
+

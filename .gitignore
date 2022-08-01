@@ -6,3 +6,6 @@ obj/
 *.a
 *.pdf
 *.psw
+log
+*.log
+.DS_Store
