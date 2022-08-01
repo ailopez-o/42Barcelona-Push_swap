@@ -201,12 +201,18 @@ $>
 - [Example and Pyviz](https://github.com/anyaschukin/Push_Swap)
 - VIDEO https://www.youtube.com/watch?v=7KW59UO55TQ
 - Sort Algorithm: 
-		https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
-		https://zainab-dnaya.medium.com/fastest-push-swap-algorithm-2f510028602b
-		Radix: https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+
+	- https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
+	- https://zainab-dnaya.medium.com/fastest-push-swap-algorithm-2f510028602b
+	- Radix: https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+
 - Push_Swap testers: 
-https://github.com/lmalki-h/push_swap_tester
-https://github.com/laisarena/push_swap_tester
-https://github.com/LeoFu9487/push_swap_tester
-- Visualizer: https://github.com/o-reo/push_swap_visualizer
+
+	- https://github.com/lmalki-h/push_swap_tester
+	- https://github.com/laisarena/push_swap_tester
+	- https://github.com/LeoFu9487/push_swap_tester
+
+- Visualizer: 
+
+	- https://github.com/o-reo/push_swap_visualizer
 
