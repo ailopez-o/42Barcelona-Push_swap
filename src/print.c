@@ -19,14 +19,22 @@ void	print_row(t_stack *stack_a, t_stack *stack_b)
 
 	str = ft_strdup(" ");
 	if (stack_a)
+	{
+		free (str);
 		str = ft_itoa(stack_a->num);
+	}
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd(" ", 1);
+	free (str);
 	str = ft_strdup(" ");
 	if (stack_b)
+	{
+		free (str);
 		str = ft_itoa(stack_b->num);
+	}
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd("\n", 1);
+	free(str);
 }
 
 void	print_stack(t_stack *stack_a, t_stack *stack_b)

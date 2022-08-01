@@ -72,8 +72,8 @@ int	main(int argv, char **argc)
 
 	fill_stack(&meta.stack_a, argc);
 	meta.stack_size = stack_lstsize(meta.stack_a);
-	//easy_short(&meta);
-	//print_stack(meta.stack_a, meta.stack_b);
+	easy_short(&meta);
+	print_stack(meta.stack_a, meta.stack_b);
 
 	if (meta.gui)
 	{
@@ -81,6 +81,11 @@ int	main(int argv, char **argc)
 		mlx_hook(meta.vars.win, 2, 0, key_press, &meta);	
 		mlx_hook(meta.vars.win, 17, 0, terminate_program, &meta);
 		mlx_loop(meta.vars.mlx);
+	}
+	else
+	{
+		stack_lstfree(&meta.stack_a);
+		stack_lstfree(&meta.stack_b);		
 	}	
 	/*
 	sa(stack_a);

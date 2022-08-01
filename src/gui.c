@@ -2,6 +2,7 @@
 #include "../lib/miniliblx/minilibx_macos/mlx.h"
 #include "../inc/algorithms.h"
 #include "../inc/print.h"
+#include "../inc/lst_utils.h"
 #include <math.h>
 
 int	get_color(t_meta *meta, int color)
@@ -73,6 +74,8 @@ int	terminate_program(void *param)
 
 	meta = (t_meta *)param;
 	mlx_destroy_window(meta->vars.mlx, meta->vars.win);
+	stack_lstfree(&meta->stack_a);
+	stack_lstfree(&meta->stack_b);		
 	exit(0);
 }
 
