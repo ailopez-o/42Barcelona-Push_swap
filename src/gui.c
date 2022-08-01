@@ -1,8 +1,10 @@
 #include "../inc/defines.h"
 #include "../lib/miniliblx/minilibx_macos/mlx.h"
+#include "../lib/libft/libft.h"
 #include "../inc/algorithms.h"
 #include "../inc/print.h"
 #include "../inc/lst_utils.h"
+#include "../inc/instructions.h"
 #include <math.h>
 
 int	get_color(t_meta *meta, int color)
@@ -157,13 +159,24 @@ int	key_press(int key, void *param)
 	meta = (t_meta *)param;
     if (key == KEY_ESC)
 		terminate_program(meta);
+    if (key == KEY_S)
+		sort(meta);
     if (key == KEY_1)
-	{
-		easy_short(meta);
-		print_stack(meta->stack_a, meta->stack_b);
-	}
-
-
+		sa(meta);
+    if (key == KEY_2)
+		sb(meta);
+    if (key == KEY_3)
+		ra(meta);
+    if (key == KEY_4)
+		rb(meta);
+    if (key == KEY_5)
+		rra(meta);
+    if (key == KEY_6)
+		rrb(meta);
+    if (key == KEY_7)
+		pa(meta);
+    if (key == KEY_8)
+		pb(meta);
 	return (1);
 }
 
@@ -181,7 +194,7 @@ int	draw_stack_b(t_meta *meta)
 	stackini = stack;
 	if (!stack)
 		return (0);
-	maxvalue = 0;
+	maxvalue = stack->num;
 	while (stack->next)
 	{
 		stack = stack->next;
@@ -220,7 +233,7 @@ int	draw_stack_a(t_meta *meta)
 	stackini = stack;
 	if (!stack)
 		return (0);
-	maxvalue = 0;
+	maxvalue = stack->num;
 	while (stack->next)
 	{
 		stack = stack->next;
@@ -255,5 +268,14 @@ int draw_push_swap(t_meta *meta)
 	meta->bitmap.img, 0, 0);
 	mlx_do_sync(meta->vars.mlx);
     return (1);
+}
+
+int gui(t_meta *meta, char *op)
+{
+	if (meta->gui)
+		draw_push_swap(meta);
+	if (meta->print)
+		ft_putstr_fd(op, 1);
+	return (1);
 }
 

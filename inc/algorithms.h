@@ -1,1 +1,1 @@
-int easy_short(t_meta *meta);
+int sort(t_meta *meta);

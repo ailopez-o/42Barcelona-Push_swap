@@ -90,6 +90,8 @@ int	stack_is_sorted(t_stack *first)
 {
 	t_stack	*stack;
 
+	if (!first)
+		return (0);
 	stack = first;
 	while (stack->next)
 	{

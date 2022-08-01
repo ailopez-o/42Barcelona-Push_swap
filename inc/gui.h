@@ -7,3 +7,4 @@ int	draw_bar(t_meta *meta, t_point start, t_point end, int with);
 int	draw_stack_a(t_meta *meta);
 int	draw_stack_b(t_meta *meta);
 int draw_push_swap(t_meta *meta);
+int gui(t_meta *meta, char *op);

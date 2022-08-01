@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../inc/lst_utils.h"
+#include "../inc/gui.h"
 
-int	ra(t_stack *stack)
+static void r(t_stack *stack)
 {
 	int	num;
 
+	if (!stack)
+		return;
 	num = stack->num;
 	while (stack)
 	{
@@ -25,28 +28,26 @@ int	ra(t_stack *stack)
 			stack->num = stack->next->num;
 		stack = stack->next;
 	}
-	return (write(1, "ra\n", 3));
 }
 
-int	rb(t_stack *stack)
+int	ra(t_meta *meta)
 {
-	int	num;
-
-	num = stack->num;
-	while (stack)
-	{
-		if (stack->next == NULL)
-			stack->num = num;
-		else
-			stack->num = stack->next->num;
-		stack = stack->next;
-	}
-	return (write(1, "ra\n", 3));
+	r(meta->stack_a);
+	gui(meta, "ra\n");
+	return (1);	
 }
 
-int	rr(t_stack *stack_a, t_stack *stack_b)
+int	rb(t_meta *meta)
 {
-	ra(stack_a);
-	rb(stack_b);
-	return (write(1, "rr\n", 3));
+	r(meta->stack_b);
+	gui(meta, "rb\n");
+	return (1);	
+}
+
+int	rr(t_meta *meta)
+{
+	r(meta->stack_a);
+	r(meta->stack_b);
+	gui(meta, "rr\n");
+	return (1);
 }

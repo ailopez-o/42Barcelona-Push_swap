@@ -3,15 +3,15 @@
 
 # include "../inc/defines.h"
 
-int sa(t_stack *stack);
-int sb(t_stack *stack);
-int ss(t_stack *stack_a, t_stack *stack_b);
-int pa(t_stack **stack_a, t_stack **stack_b);
-int pb(t_stack **stack_a, t_stack **stack_b);
-int	ra(t_stack *stack);
-int	rb(t_stack *stack);
-int	rr(t_stack *stack_a, t_stack *stack_b);
-int	rra(t_stack *stack);
-int	rrb(t_stack *stack);
-int	rrr(t_stack *stack_a, t_stack *stack_b);
+int sa(t_meta *meta);
+int sb(t_meta *meta);
+int ss(t_meta *meta);
+int pa(t_meta *meta);
+int pb(t_meta *meta);
+int	ra(t_meta *meta);
+int	rb(t_meta *meta);
+int	rr(t_meta *meta);
+int	rra(t_meta *meta);
+int	rrb(t_meta *meta);
+int	rrr(t_meta *meta);
 #endif

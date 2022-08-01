@@ -5,17 +5,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int easy_short(t_meta *meta)
+int num_max(t_stack *stack)
 {
-    int     numelems;
+    int nummax;
 
-    numelems = meta->stack_size / 2;
-    while(numelems)
+    nummax = 0;
+    while (stack)
     {
-        pb(&(meta->stack_a), &(meta->stack_b));
-        if (meta->gui)
-		    draw_push_swap(meta);
-        numelems--;
+        if (stack->num > nummax)
+            nummax = stack->num;
+        stack = stack->next;
     }
+    return (nummax);
+}
+
+static int easy_sort(t_meta *meta)
+{
+    int     nummax;
+
+    while (meta->stack_a)
+    {
+        nummax = num_max(meta->stack_a);
+        while (meta->stack_a->num != nummax)
+            rra(meta);
+        pb(meta);
+    }
+
+    while (meta->stack_b)
+        pa(meta);
 	return (1);
+}
+
+int sort(t_meta *meta)
+{
+    easy_sort(meta);
+    return (1);
 }

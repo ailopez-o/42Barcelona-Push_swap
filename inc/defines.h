@@ -13,23 +13,12 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
+# include "keycodes.h"
 # include <stdlib.h>
 # include <unistd.h>
 
 # define WINX 600	
 # define WINY 800
-
-# define KEY_ESC     53
-# define KEY_1       18
-# define KEY_2       19
-# define KEY_3       20
-# define KEY_4       21
-# define KEY_5       23
-# define KEY_6       22
-# define KEY_7       26
-# define KEY_8       28
-# define KEY_9       25
-# define KEY_0       29
 
 # define X 0
 # define Y 1
@@ -77,6 +66,7 @@ typedef struct s_meta {
 	t_vars		vars;
 	t_bitmap	bitmap;
 	int			gui;
+	int			print;	
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 	int			stack_size;
