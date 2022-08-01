@@ -10,6 +10,10 @@
 
 ## Algorithmic project
 
+<p align="center">
+	<img src="https://github.com/ailopez-o/42Barcelona-push_swap/blob/main/img/push_swap.png" />
+</p>
+
 The main goal is to sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions. To succeed you’ll have to manipulate various
 types of algorithms and choose the one (of many) most appropriate solution for an
