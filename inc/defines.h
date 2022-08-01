@@ -50,6 +50,7 @@
 typedef struct		s_stack
 {
 	int				num;
+	int				barwith;
 	struct s_stack	*next;
 	struct s_stack	*pre;
 }					t_stack;
@@ -75,6 +76,10 @@ typedef struct s_vars {
 typedef struct s_meta {
 	t_vars		vars;
 	t_bitmap	bitmap;
+	int			gui;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	int			stack_size;
 }	t_meta;
 
 #endif

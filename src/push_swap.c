@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../lib/libft/libft.h"
+#include "../lib/miniliblx/minilibx_macos/mlx.h"
 #include "../inc/lst_utils.h"
 #include "../inc/print.h"
 #include "../inc/gui.h"
 #include "../inc/instructions.h"
-#include "../lib/miniliblx/minilibx_macos/mlx.h"
+#include "../inc/algorithms.h"
 #include <stddef.h>
 
 int	short_stack(t_stack *stack_a, t_stack **stack_b)
@@ -48,49 +49,35 @@ int	fill_stack(t_stack **stack, char **values)
 
 int	main(int argv, char **argc)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	//t_stack	*stack_a;
+	//t_stack	*stack_b;
 	t_meta	meta;
-	int		gui;
-
 
 	if (argv < 2)
 		return (0);
-	gui = 0;
+	meta.gui = 0;
+	meta.stack_a = NULL;
+	meta.stack_b = NULL;	
 	if (!ft_strncmp(argc[1], "-g", 2))
 	{
-		gui = 1;
+		meta.gui = 1;
 		argc++;
 		meta.vars.mlx = mlx_init();
 		meta.vars.win = mlx_new_window(meta.vars.mlx, WINX, WINY, "push_swap - ailopez-");
 		meta.bitmap.img = mlx_new_image(meta.vars.mlx, WINX, WINY);
 		meta.bitmap.buffer = mlx_get_data_addr(meta.bitmap.img, \
 			&meta.bitmap.bitxpixel, &meta.bitmap.lines, &meta.bitmap.endian);
-		generate_background(&meta, CARBON);
 		draw_push_swap(&meta);
 	}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	fill_stack(&stack_a, argc);
-	short_stack(stack_a, &stack_b);
-	print_stack(stack_a, stack_b);
+	fill_stack(&meta.stack_a, argc);
+	meta.stack_size = stack_lstsize(meta.stack_a);
+	//easy_short(&meta);
+	//print_stack(meta.stack_a, meta.stack_b);
 
-/*
-	start.axis[X] = 0;
-	start.axis[Y] = WINY/4;
-	start.color = AZUL;
-	end.axis[X] = WINX/4;
-	end.axis[Y] = WINY/4;
-	end.color = FUCSIA;
-	draw_bar(&meta, start, end, 20);
-	draw_push_swap(&meta);
-*/
-
-
-	if (gui)
+	if (meta.gui)
 	{
-		draw_stack_a(stack_a, &meta);
+		draw_push_swap(&meta);		
 		mlx_hook(meta.vars.win, 2, 0, key_press, &meta);	
 		mlx_hook(meta.vars.win, 17, 0, terminate_program, &meta);
 		mlx_loop(meta.vars.mlx);

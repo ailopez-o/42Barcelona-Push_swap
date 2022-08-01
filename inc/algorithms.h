@@ -1,0 +1,1 @@
+int easy_short(t_meta *meta);

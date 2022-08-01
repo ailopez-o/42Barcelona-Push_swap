@@ -1,5 +1,7 @@
 #include "../inc/defines.h"
 #include "../lib/miniliblx/minilibx_macos/mlx.h"
+#include "../inc/algorithms.h"
+#include "../inc/print.h"
 #include <math.h>
 
 int	get_color(t_meta *meta, int color)
@@ -63,13 +65,6 @@ int	generate_background(t_meta *meta, int backcolor)
 		axis[X] = 0;
 	}
 	return (1);
-}
-
-int draw_push_swap(t_meta *meta)
-{
-    mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
-	meta->bitmap.img, 0, 0);
-    return (1);
 }
 
 int	terminate_program(void *param)
@@ -155,76 +150,107 @@ int draw_bar(t_meta *meta, t_point start, t_point end, int with)
 int	key_press(int key, void *param)
 {
 	t_meta	*meta;
-	t_point	start;
-	t_point end;	
-
+	
 	meta = (t_meta *)param;
     if (key == KEY_ESC)
 		terminate_program(meta);
-  	if (key == KEY_1)
+    if (key == KEY_1)
 	{
-		start.axis[X] = 0;
-		start.axis[Y] = WINY/2;
-		start.color = AZUL;
-		end.axis[X] = WINX/2;
-		end.axis[Y] = WINY/2;
-		end.color = ROJO;
-		draw_bar(meta, start, end, 10);
-		draw_push_swap(meta);
+		easy_short(meta);
+		print_stack(meta->stack_a, meta->stack_b);
 	}
- 	if (key == KEY_2)
-	{
-		start.axis[X] = 0;
-		start.axis[Y] = WINY/4;
-		start.color = AZUL;
-		end.axis[X] = WINX/4;
-		end.axis[Y] = WINY/4;
-		end.color = FUCSIA;
-		draw_bar(meta, start, end, 20);
-		draw_push_swap(meta);
-	}	
+
+
 	return (1);
 }
 
-
-int	draw_stack_a(t_stack *stack, t_meta *meta)
+int	draw_stack_b(t_meta *meta)
 {
 	int	maxvalue;
-	int maxitems;
 	int	barwith;
 	int i;
 	t_point	start;
 	t_point end;
 	t_stack	*stackini;
+	t_stack *stack;
 
+	stack = meta->stack_b;
 	stackini = stack;
 	if (!stack)
 		return (0);
-	maxitems = 1;
 	maxvalue = 0;
 	while (stack->next)
 	{
 		stack = stack->next;
-		maxitems++;
 		if (stack->num > maxvalue)
 			maxvalue = stack->num;
 	}
-	barwith = WINY/maxitems;
+	barwith = WINY / meta->stack_size;
 	stack = stackini;
 	i = 0;
 	while (stack)
 	{	
-		start.axis[X] = 0;
+		start.axis[X] = WINX/2;
 		start.axis[Y] = barwith * i;
-		start.color = AZUL;
-		end.axis[X] = ((WINX/2) * stack->num)/maxvalue;
-		end.axis[Y] = barwith * i;
-		end.color = FUCSIA;
+		start.color = FLAMINGO;
+		end.axis[X] = WINX/2 + ((((WINX/2) * stack->num) / maxvalue));
+		end.axis[Y] = barwith * i;	
+		end.color = VERDE;	
 		draw_bar(meta, start, end, barwith);
 		stack = stack->next;
 		i++;
 	}
-	draw_push_swap(meta);
 	return (1);
+}
+
+int	draw_stack_a(t_meta *meta)
+{
+	int	maxvalue;
+	int	barwith;
+	int i;
+	t_point	start;
+	t_point end;
+	t_stack	*stackini;
+	t_stack *stack;
+
+	stack = meta->stack_a;
+	stackini = stack;
+	if (!stack)
+		return (0);
+	maxvalue = 0;
+	while (stack->next)
+	{
+		stack = stack->next;
+		if (stack->num > maxvalue)
+			maxvalue = stack->num;
+	}
+	barwith = WINY / meta->stack_size;
+	stack = stackini;
+	i = 0;
+	while (stack)
+	{	
+		start.axis[X] = WINX/2 - (((WINX/2) * stack->num) / maxvalue);
+		start.axis[Y] = barwith * i;
+		start.color = FUCSIA;
+		end.axis[X] = WINX/2;
+		end.axis[Y] = barwith * i;	
+		end.color = AZUL;	
+	
+		draw_bar(meta, start, end, barwith);
+		stack = stack->next;
+		i++;
+	}
+	return (1);
+}
+
+int draw_push_swap(t_meta *meta)
+{
+	generate_background(meta, CARBON);
+    draw_stack_a(meta);
+	draw_stack_b(meta);
+    mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
+	meta->bitmap.img, 0, 0);
+	mlx_do_sync(meta->vars.mlx);
+    return (1);
 }
 
