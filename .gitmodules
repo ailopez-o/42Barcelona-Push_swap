@@ -7,3 +7,6 @@
 [submodule "testers/lmaki-h"]
 	path = testers/lmaki-h
 	url = https://github.com/lmalki-h/push_swap_tester.git
+[submodule "lib/libft"]
+	path = lib/libft
+	url = git@github.com:ailopez-o/42Barcelona-Libft.git

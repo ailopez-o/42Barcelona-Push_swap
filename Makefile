@@ -49,7 +49,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab gui algorithms
+SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab gui algorithms utils
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -75,7 +75,7 @@ bonus:
 			
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS) | $(OBJF)
 			@echo "🍩 $(YELLOW)Compiling: $< $(DEF_COLOR)"
-			$(CC) $(CFLAGS) -MMD -c $< -o $@
+			$(CC) $(CFLAGS) $(FSANITIZE) -MMD -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)

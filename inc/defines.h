@@ -24,6 +24,9 @@
 # define Y 1
 # define Z 2
 
+# define STACKA	0
+# define STACKB	1
+
 # define ROJO 		0xc1272d
 # define VERDE		0x33cc55
 # define FUCSIA 	0xff255c
@@ -44,9 +47,15 @@ typedef struct		s_stack
 }					t_stack;
 
 typedef struct s_point {
-	float	axis[3];
+	float	axis[2];
 	int		color;
 }	t_point;
+
+typedef struct s_bar {
+	t_point	start;
+	t_point end;
+	int 	width;
+}	t_bar;
 
 typedef struct s_bitmap {
 	void	*img;
@@ -64,11 +73,16 @@ typedef struct s_vars {
 typedef struct s_meta {
 	t_vars		vars;
 	t_bitmap	bitmap;
-	int			gui;
-	int			print;	
 	t_stack		*stack_a;
-	t_stack		*stack_b;
+	t_stack		*stack_b;	
+	int			gui;
+	int			print_stack;
+	int			print_ops;	
 	int			stack_size;
+	int			max;
+	int			min;
+	int			abs;
+	int			neg;
 	int			numops;
 }	t_meta;
 

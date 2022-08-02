@@ -40,7 +40,7 @@ int	rra(t_meta *meta)
 int	rrb(t_meta *meta)
 {
 	rr(meta->stack_b);
-	return (gui(meta, "rra\n"));
+	return (gui(meta, "rrb\n"));
 }
 
 int	rrr(t_meta *meta)

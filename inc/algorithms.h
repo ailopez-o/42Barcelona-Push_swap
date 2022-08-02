@@ -1,1 +1,1 @@
-int sort(t_meta *meta);
+int	sort(t_meta *meta);

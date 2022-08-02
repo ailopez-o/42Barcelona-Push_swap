@@ -137,16 +137,16 @@ int	draw_line(t_meta *meta, t_point start, t_point end)
 	return (1);
 }
 
-int draw_bar(t_meta *meta, t_point start, t_point end, int with)
+int draw_bar(t_meta *meta, t_bar bar)
 {
 	int	i;
 
 	i = 0;
-	while (i < with)
+	while (i < bar.width)
 	{
-		draw_line(meta, start, end);
-		start.axis[Y]++;;
-		end.axis[Y]++;
+		draw_line(meta, bar.start, bar.end);
+		bar.start.axis[Y]++;;
+		bar.end.axis[Y]++;
 		i++;
 	}
 	return (1);
@@ -180,101 +180,148 @@ int	key_press(int key, void *param)
 	return (1);
 }
 
-int	draw_stack_b(t_meta *meta)
+float	bar_len(int value, int max, int neg)
 {
-	int	maxvalue;
-	int	barwith;
+	float line_len;
+	int	abs_value;
+
+	abs_value = value;
+	if (abs_value < 0)
+		abs_value = -abs_value;
+	line_len = WINX/2;
+	if (neg)
+		line_len = WINX/4;
+	line_len = line_len * abs_value; 
+	line_len = line_len / max;
+	return (line_len);
+}
+
+void get_line_stack_a(t_bar *bar, int value, int max, int neg)
+{
+	float len;
+	
+	len = bar_len(value, max, neg);
+	if (value >= 0)
+	{
+		if (neg)
+		{
+			bar->start.axis[X] = WINX / 4;
+			bar->end.axis[X] = WINX / 4 + len;
+		}
+		else
+		{
+			bar->start.axis[X] = WINX / 2 - len;
+			bar->end.axis[X] = WINX / 2;
+		}
+	}
+	else
+	{
+			bar->start.axis[X] = WINX / 4 - len;
+			bar->end.axis[X] = WINX / 4;
+	}
+}
+
+void	get_line_stack_b(t_bar *bar, int value, int max, int neg)
+{
+	float len;
+
+	len = bar_len(value, max, neg);
+	if (value >= 0)
+	{
+		if (neg)
+		{
+			bar->start.axis[X] = 3 * (WINX / 4);
+			bar->end.axis[X] = 3 * (WINX / 4) + len;
+		}
+		else
+		{
+			bar->start.axis[X] = WINX / 2;
+			bar->end.axis[X] = WINX / 2 + len;
+		}
+	}
+	else
+	{
+			bar->start.axis[X] = 3 * (WINX / 4) - len;
+			bar->end.axis[X] = 3 * (WINX / 4);
+	}
+}
+
+void	load_colors_stacks(t_bar *bar, int stack)
+{
+	if (stack == STACKA)
+	{
+		bar->start.color = FUCSIA;
+		bar->end.color = AZUL;
+	}
+	if (stack == STACKB)
+	{
+		bar->start.color = FLAMINGO;
+		bar->end.color = VERDE;
+	}	
+}
+
+int	draw_stack(t_meta *meta, int stack_side)
+{
 	int i;
-	t_point	start;
-	t_point end;
-	t_stack	*stackini;
+	t_bar	bar;
 	t_stack *stack;
 
-	stack = meta->stack_b;
-	stackini = stack;
+	stack = meta->stack_a;
+	if (stack_side == STACKB)
+		stack = meta->stack_b;
 	if (!stack)
 		return (0);
-	maxvalue = stack->num;
-	while (stack->next)
-	{
-		stack = stack->next;
-		if (stack->num > maxvalue)
-			maxvalue = stack->num;
-	}
-	barwith = (WINY) / meta->stack_size;
-	stack = stackini;
+	bar.width = (WINY) / meta->stack_size;
 	i = 0;
 	while (stack)
-	{	
-		start.axis[X] = WINX/2;
-		start.axis[Y] = barwith * i;
-		start.color = FLAMINGO;
-		end.axis[X] = WINX/2 + ((((WINX/2) * stack->num) / maxvalue));
-		end.axis[Y] = barwith * i;	
-		end.color = VERDE;	
-		draw_bar(meta, start, end, barwith);
+	{
+		load_colors_stacks(&bar, stack_side);
+		if (stack_side == STACKA)
+			get_line_stack_a(&bar, stack->num, meta->abs, meta->neg);
+		if (stack_side == STACKB)
+			get_line_stack_b(&bar, stack->num, meta->abs, meta->neg);
+		bar.start.axis[Y] = bar.width * i;
+		bar.end.axis[Y] = bar.width * i;		
+		draw_bar(meta, bar);
 		stack = stack->next;
 		i++;
 	}
 	return (1);
 }
 
-int	draw_stack_a(t_meta *meta)
+void draw_half(t_meta *meta)
 {
-	int	maxvalue;
-	int	barwith;
-	int i;
-	t_point	start;
-	t_point end;
-	t_stack	*stackini;
-	t_stack *stack;
+	t_bar bar;
 
-	stack = meta->stack_a;
-	stackini = stack;
-	if (!stack)
-		return (0);
-	maxvalue = stack->num;
-	while (stack->next)
-	{
-		stack = stack->next;
-		if (stack->num > maxvalue)
-			maxvalue = stack->num;
-	}
-	barwith = (WINY) / meta->stack_size;
-	stack = stackini;
-	i = 0;
-	while (stack)
-	{	
-		start.axis[X] = WINX/2 - (((WINX/2) * stack->num) / maxvalue);
-		start.axis[Y] = barwith * i;
-		start.color = FUCSIA;
-		end.axis[X] = WINX/2;
-		end.axis[Y] = barwith * i;	
-		end.color = AZUL;	
-	
-		draw_bar(meta, start, end, barwith);
-		stack = stack->next;
-		i++;
-	}
-	return (1);
+	bar.start.axis[X] = WINX / 2;
+	bar.start.axis[Y] = 0;
+	bar.end.axis[X] = WINX / 2;
+	bar.end.axis[Y] = WINY;
+	bar.width = 3;
+	bar.start.color = ROJO;
+	bar.end.color = ROJO;
+	draw_bar(meta, bar);
 }
 
 int draw_push_swap(t_meta *meta)
 {
 	char	*str;
 	char	*strnumops;
+	char	*print;
 
 	generate_background(meta, CARBON);
-    draw_stack_a(meta);
-	draw_stack_b(meta);
+	//draw_half(meta);
+    draw_stack(meta, STACKA);
+	draw_stack(meta, STACKB);
     mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
 	meta->bitmap.img, 0, 0);
 	str = ft_strdup("operations: ");
 	strnumops = ft_itoa(meta->numops);
-	str = ft_strjoin(str, strnumops);
-	mlx_string_put(meta->vars.mlx, meta->vars.win, WINX - 200, WINY - 30, VERDE, str);
+	print = ft_strjoin(str, strnumops);
+	mlx_string_put(meta->vars.mlx, meta->vars.win, WINX - 200, WINY - 30, VERDE, print);
 	free (str);
 	free (strnumops);
+	free (print);
 	mlx_do_sync(meta->vars.mlx);
     return (1);
 }
@@ -284,8 +331,10 @@ int gui(t_meta *meta, char *op)
 	meta->numops++;
 	if (meta->gui)
 		draw_push_swap(meta);
-	if (meta->print)
+	if (meta->print_ops)
 		ft_putstr_fd(op, 1);
+	if (meta->print_stack)
+		print_stack	(meta->stack_a, meta->stack_b);
 	return (1);
 }
 
