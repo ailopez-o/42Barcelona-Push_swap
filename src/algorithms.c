@@ -38,33 +38,7 @@ static int easy_sort(t_meta *meta)
 	return (1);
 }
 
-
-static int bubble_sort(t_meta *meta)
-{
-    int i;
-    int j;
-
-    i = 0;
-    while (i < meta->stack_size)
-    {
-        j = 0;
-        while (j < meta->stack_size)
-        {
-            rra(meta); 
-            if (meta->stack_a->next != NULL && meta->stack_a->num > meta->stack_a->next->num)
-                sa(meta);
-            j++;
-        }
-        pb(meta);
-        i++;
-    }
-    while (meta->stack_b)
-        pa(meta); 
-	return (1);
-}
-
 */
-
 
 
 int get_index(t_stack *stack, int value)
@@ -217,7 +191,7 @@ int chop_sort(t_meta *meta)
 int my_sort(t_meta *meta)
 {
 
-    if (meta->stack_size < 25)
+    if (meta->stack_size < 10)
     {
         quick_sort(meta, STACKA);
         quick_sort(meta, STACKB); 
