@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/03 21:38:32 by aitoraudi         #+#    #+#             */
+/*   Updated: 2022/08/03 21:38:40 by aitoraudi        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../inc/defines.h"
 
 int get_max(t_stack *stack)
@@ -50,4 +61,14 @@ int get_abs(int max, int min)
         return (min);
     else 
         return (max);
+}
+
+int	ft_round(double num)
+{
+	int	rounded;
+
+	rounded = (int)num;
+	if (num - rounded >= .5)
+		rounded++;
+	return (rounded);
 }

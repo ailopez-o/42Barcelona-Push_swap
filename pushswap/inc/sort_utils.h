@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   sort_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 21:42:48 by aitoraudi         #+#    #+#             */
-/*   Updated: 2022/08/03 21:42:50 by aitoraudi        ###   ########.fr       */
+/*   Created: 2022/08/03 21:41:50 by aitoraudi         #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:52 by aitoraudi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	get_max(t_stack *stack);
-int	get_min(t_stack *stack);
-int get_abs(int max, int min);
-int are_negatives(t_stack *stack);
-int	ft_round(double num);
+int	get_index(t_stack *stack, int value);
+int num_max(t_stack *stack);
+t_stack *push_side(t_meta *meta, int side);
+int are_values(t_stack *stack, int key_nbr);
+int best_rr(t_meta *meta, int index, int stack_size,int side);

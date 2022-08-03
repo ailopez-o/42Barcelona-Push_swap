@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   gui_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 21:42:48 by aitoraudi         #+#    #+#             */
-/*   Updated: 2022/08/03 21:42:50 by aitoraudi        ###   ########.fr       */
+/*   Created: 2022/08/03 21:39:30 by aitoraudi         #+#    #+#             */
+/*   Updated: 2022/08/03 21:39:32 by aitoraudi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	get_max(t_stack *stack);
-int	get_min(t_stack *stack);
-int get_abs(int max, int min);
-int are_negatives(t_stack *stack);
-int	ft_round(double num);
+int		key_press(int key, void *param);
+int		terminate_program(void *param);
+int		gui(t_meta *meta, char *op);
+float	bar_len(int value, int max, int neg);
+void	load_colors_stacks(t_bar *bar, int stack);

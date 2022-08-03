@@ -39,9 +39,11 @@ all:
 
 			
 clean:
+		rm push_swap
 		@make clean -sC $(PUSH_SWAP_DIR)
 
 fclean:		
+		rm push_swap
 		@make fclean -sC $(PUSH_SWAP_DIR)
 
 

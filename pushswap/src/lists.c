@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -56,20 +56,7 @@ void	stack_lstadd_back(t_stack **lst, t_stack *new)
 		*lst = new;
 }
 
-int	stack_lstsize(t_stack *lst)
-{
-	int	len;
 
-	if (!lst)
-		return (0);
-	len = 1;
-	while (lst->next)
-	{
-		lst = lst->next;
-		len++;
-	}
-	return (len);
-}
 
 void	stack_lstfree(t_stack **lst)
 {	
@@ -86,18 +73,4 @@ void	stack_lstfree(t_stack **lst)
 	*lst = NULL;
 }
 
-int	stack_is_sorted(t_stack *first)
-{
-	t_stack	*stack;
 
-	if (!first)
-		return (0);
-	stack = first;
-	while (stack->next)
-	{
-		if (stack->num >= stack->next->num)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}

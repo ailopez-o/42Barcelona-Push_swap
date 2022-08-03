@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../inc/lst_utils.h"
-#include "../inc/gui.h"
+#include "../inc/gui_utils.h"
 
 static void	rr(t_stack *stack)
 {

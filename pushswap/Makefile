@@ -49,7 +49,20 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab gui algorithms utils
+SRC_FILES	=	main \
+				lists \
+				lists_utils \
+				print \
+				rab \
+				rrab \
+				sab \
+				pab \
+				gui \
+				gui_utils \
+				draw \
+				sort \
+				sort_utils \
+				utils
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

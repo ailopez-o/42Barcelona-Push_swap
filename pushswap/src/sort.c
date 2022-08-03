@@ -1,24 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/03 21:38:22 by aitoraudi         #+#    #+#             */
+/*   Updated: 2022/08/03 21:38:24 by aitoraudi        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../inc/instructions.h"
 #include "../inc/lst_utils.h"
 #include "../inc/utils.h"
+#include "../inc/sort_utils.h"
 #include "../inc/gui.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int num_max(t_stack *stack)
-{
-    int nummax;
 
-    nummax = 0;
-    while (stack)
-    {
-        if (stack->num > nummax)
-            nummax = stack->num;
-        stack = stack->next;
-    }
-    return (nummax);
-}
 /*
 
 static int easy_sort(t_meta *meta)
@@ -41,18 +41,7 @@ static int easy_sort(t_meta *meta)
 */
 
 
-int get_index(t_stack *stack, int value)
-{
-    int pos;
 
-    pos = 0;
-    while(stack->num != value)
-    {
-        stack = stack->next;
-        pos++;
-    }
-    return(pos);
-}
 
 
 int quick_sort_10(t_meta *meta)
@@ -82,19 +71,7 @@ int quick_sort_10(t_meta *meta)
     return (1);
 }
 
-int are_values(t_stack *stack, int key_nbr)
-{
-    int exist;
 
-    exist = 0;
-    while (stack)
-    {
-        if (stack->num < key_nbr)
-            exist = 1;
-        stack = stack->next;
-    }
-    return (exist);
-}
 
 int sort_key_nbr(t_meta *meta, int key_nbr)
 {
@@ -108,38 +85,7 @@ int sort_key_nbr(t_meta *meta, int key_nbr)
     return (1);
 }
 
-int best_rr(t_meta *meta, int index, int stack_size,int side)
-{
-    if (index > stack_size/2)
-    {
-        if (side == STACKA)
-            rra(meta);
-        else
-            rrb(meta);
-    }
-    else
-    {
-        if (side == STACKA)
-            ra(meta);
-        else
-            rb(meta);
-    }
-    return (1);
-}
 
-t_stack *push_side(t_meta *meta, int side)
-{
-    if (side == STACKB)
-    {
-        pa(meta);
-        return (meta->stack_b);
-    }
-    else
-    {
-        pb(meta);
-        return (meta->stack_a);       
-    }
-}
 
 void quick_sort(t_meta *meta, int side)
 {
@@ -188,7 +134,7 @@ int chop_sort(t_meta *meta)
     return (1);
 }
 
-int my_sort(t_meta *meta)
+int sort(t_meta *meta)
 {
 
     if (meta->stack_size < 10)
@@ -198,12 +144,5 @@ int my_sort(t_meta *meta)
     }
     else 
         chop_sort(meta);
-    return (1);
-}
-
-
-int sort(t_meta *meta)
-{
-    my_sort(meta);
     return (1);
 }
