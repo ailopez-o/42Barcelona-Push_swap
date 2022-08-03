@@ -15,24 +15,8 @@
 
 NAME		:= push_swap
 
-SRC_DIR		:= src/
-OBJ_DIR		:= obj/
-CC			:= gcc
-CFLAGS		:= -g -Wall -Werror -Wextra
-#FSANITIZE	:= -fsanitize=address -g3
-FSANITIZE	:= 
-NOFLAGS		:= -g
-RM			:= rm -f
-
-INC		 		:= inc/
-LIB				:= lib/
-LIBFT_DIR		:= $(LIB)libft/
-LIBFT			:= $(LIBFT_DIR)libft.a
-HEADER 			:= -I$(INC) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
-MINILIBX_DIR	:= $(LIB)miniliblx/minilibx_macos/
-MINILIBX		:= $(MINILIBX_DIR)libmlx.a
-MINILIBXCC		:= -I mlx -L $(MINILIBX_DIR) -lmlx
-OPENGL			:= -framework OpenGL -framework AppKit
+PUSH_SWAP_DIR := pushswap/
+CHECKER_DIR := checker/
 
 
 # Colors
@@ -47,67 +31,23 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-#Sources
 
-SRC_FILES	=	push_swap lst_utils print rab rrab sab_pab gui algorithms utils
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-DEPS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
-INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
-###
-
-OBJF		=	.cache_exists
-
-all:	$(NAME)
-			
--include 	${DEPS}
-$(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
-			make -sC $(LIBFT_DIR)			
-			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
-			@echo "👉 $(BLUE)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
-			@echo "$(GREEN)✨ push_swap compiled!$(DEF_COLOR)"
+all:	
+	make -C $(PUSH_SWAP_DIR)
+	cp $(PUSH_SWAP_DIR)push_swap push_swap
 
 			
-
-bonus:		
-			@$(MAKE) all
-			
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS) | $(OBJF)
-			@echo "🍩 $(YELLOW)Compiling: $< $(DEF_COLOR)"
-			$(CC) $(CFLAGS) $(FSANITIZE) -MMD -c $< -o $@
-
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
-
-$(LIBFT):
-	@make -C $(LIBFT_DIR)
-	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"	
-
-$(MINILIBX):
-	@make -C $(MINILIBX_DIR)
-	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"	
-		
 clean:
-			@make clean -sC $(LIBFT_DIR)
-			@echo "$(CYAN)Libft object and dependency files cleaned.$(DEF_COLOR)"
-			@make clean -C $(MINILIBX_DIR)
-			@echo "$(CYAN)Minilibx object files cleaned.$(DEF_COLOR)"	
-			$(RM) -rf $(OBJ_DIR)
-			@echo "$(CYAN)push_swap object files cleaned!$(DEF_COLOR)"
+		@make clean -sC $(PUSH_SWAP_DIR)
 
-fclean:		clean
-			$(RM) -f $(NAME)
-			@echo "$(CYAN)push_swap executable files cleaned!$(DEF_COLOR)"			
-			$(RM) -f $(MINILIBX_DIR)libmlx.a
-			@echo "$(CYAN)libmlx.a lib cleaned!$(DEF_COLOR)"			
-			$(RM) -f $(LIBFT_DIR)libft.a
-			@echo "$(CYAN)libft.a lib cleaned!$(DEF_COLOR)"
+fclean:		
+		@make fclean -sC $(PUSH_SWAP_DIR)
 
 
 re:			fclean 
 			@$(MAKE)	
-			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap/checker!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDE) | grep -v Norme -B1 || true
