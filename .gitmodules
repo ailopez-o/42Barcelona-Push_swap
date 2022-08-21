@@ -1,12 +1,12 @@
-[submodule "program/testers/LeoFu9487"]
-	path = program/testers/LeoFu9487
-	url = https://github.com/LeoFu9487/push_swap_tester.git
-[submodule "testers/Laisarena"]
-	path = program/testers/Laisarena
-	url = https://github.com/laisarena/push_swap_tester.git
-[submodule "program/testers/lmaki-h"]
-	path = program/testers/lmaki-h
-	url = https://github.com/lmalki-h/push_swap_tester.git
 [submodule "program/lib/libft"]
 	path = program/lib/libft
 	url = git@github.com:ailopez-o/42Barcelona-Libft.git
+[submodule "program/testers/LeoFu9487"]
+	path = program/testers/LeoFu9487
+	url = https://github.com/LeoFu9487/push_swap_tester.git
+[submodule "program/testers/Laisarena"]
+	path = program/testers/Laisarena
+	url = https://github.com/laisarena/push_swap_tester.git
+[submodule "program/testers/lmalki"]
+	path = program/testers/lmalki
+	url = https://github.com/lmalki-h/push_swap_tester.git
