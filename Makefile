@@ -15,7 +15,7 @@
 
 NAME		:= push_swap
 
-PUSH_SWAP_DIR := pushswap/
+PUSH_SWAP_DIR := program/
 CHECKER_DIR := checker/
 
 
