@@ -35,15 +35,16 @@ WHITE = \033[0;97m
 
 all:	
 	make -C $(PUSH_SWAP_DIR)
+	rm -f push_swap
 	cp $(PUSH_SWAP_DIR)push_swap push_swap
 
 			
 clean:
-		rm push_swap
+		rm -f push_swap
 		@make clean -sC $(PUSH_SWAP_DIR)
 
 fclean:		
-		rm push_swap
+		rm -f push_swap
 		@make fclean -sC $(PUSH_SWAP_DIR)
 
 

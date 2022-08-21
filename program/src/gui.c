@@ -38,9 +38,6 @@ int draw_bar(t_meta *meta, t_bar bar)
 }
 
 
-
-
-
 void get_line_stack_a(t_bar *bar, int value, int max, int neg)
 {
 	float len;
@@ -105,7 +102,7 @@ int	draw_stack(t_meta *meta, int stack_side)
 	if (!stack)
 		return (0);
 	bar.width = (WINY) / meta->stack_size;
-	printf("values [%d] - Width[%d]\n", meta->stack_size, bar.width);
+	//printf("values [%d] - Width[%d]\n", meta->stack_size, bar.width);
 	i = 0;
 	while (stack)
 	{

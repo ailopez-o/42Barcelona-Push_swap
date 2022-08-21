@@ -79,7 +79,7 @@ int	main(int argv, char **argc)
 	if (argv < 2)
 		return (0);
 	meta.gui = 0;
-	meta.print_ops = 0;
+	meta.print_ops = 1;
 	meta.print_stack = 0;	
 	if (!ft_strncmp(argc[1], "-g", 2))
 	{
@@ -88,7 +88,7 @@ int	main(int argv, char **argc)
 		gui_init(&meta);
 	}
 	stack_ini(&meta, argc);
-	printf("values [%d]\n", meta.stack_size);
+	//printf("values [%d]\n", meta.stack_size);
 	if (meta.gui)
 		gui_loop(&meta);
 	else
