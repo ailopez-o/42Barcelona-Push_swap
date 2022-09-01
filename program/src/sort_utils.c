@@ -25,6 +25,7 @@ int get_index(t_stack *stack, int value)
     return(pos);
 }
 
+
 int num_max(t_stack *stack)
 {
     int nummax;

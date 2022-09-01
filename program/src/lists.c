@@ -19,6 +19,7 @@ t_stack	*stack_lstnew(int num)
 	if (new == NULL)
 		return (NULL);
 	new->num = num;
+	new->index = 0;
 	new->next = NULL;
 	new->pre = NULL;
 	return (new);

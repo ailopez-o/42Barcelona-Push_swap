@@ -45,7 +45,7 @@ elsif ($stacksize >= $max - $min + 1)
 for (my $num = 0; $num < $stacksize; )
 {
 	my $n = int(srand() % ($max - $min) + $min);
-#	$n = '"' . $n . '"';
+	$n = '"' . $n . '"';
 	if (!(grep { $_ eq $n } @stack))
 	{
 		push @stack, $n;

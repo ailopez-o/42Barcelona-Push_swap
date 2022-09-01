@@ -20,8 +20,6 @@
 #include "../inc/gui_utils.h"
 #include <math.h>
 
-
-
 int draw_bar(t_meta *meta, t_bar bar)
 {
 	int	i;
@@ -87,8 +85,6 @@ void	get_line_stack_b(t_bar *bar, int value, int max, int neg)
 			bar->end.axis[X] = 3 * (WINX / 4);
 	}
 }
-
-
 
 int	draw_stack(t_meta *meta, int stack_side)
 {

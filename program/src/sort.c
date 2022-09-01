@@ -18,32 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /*
-
-static int easy_sort(t_meta *meta)
-{
-    int     nummax;
-
-    while (meta->stack_a)
-    {
-        nummax = num_max(meta->stack_a);
-        while (meta->stack_a->num != nummax)
-            rra(meta);
-        pb(meta);
-    }
-
-    while (meta->stack_b)
-        pa(meta);
-	return (1);
-}
-
-*/
-
-
-
-
-
 int quick_sort_10(t_meta *meta)
 {
     int index;
@@ -71,14 +46,41 @@ int quick_sort_10(t_meta *meta)
     return (1);
 }
 
+*/
 
+void index_list(t_stack *stack)
+{
+
+    int     index;
+    t_stack *top;
+    t_stack *tmp;
+    index = 0;
+
+    top = stack;
+    while (stack)
+    {
+        tmp = top;
+        while(tmp)
+        {
+            if (tmp->num < stack->num)
+                index++;
+            tmp = tmp->next;
+        }
+        stack->index = index;
+        stack = stack->next;
+        index = 0;
+    }
+}
 
 int sort_key_nbr(t_meta *meta, int key_nbr)
 {
     while (are_values(meta->stack_a, key_nbr))
     {        
         if (meta->stack_a->num < key_nbr)
+         {
             pb(meta);
+
+         }   
         else
             ra(meta);
     }
@@ -137,7 +139,7 @@ int chop_sort(t_meta *meta)
 int sort(t_meta *meta)
 {
 
-    if (meta->stack_size < 10)
+    if (meta->stack_size < 25)
     {
         quick_sort(meta, STACKA);
         quick_sort(meta, STACKB); 
