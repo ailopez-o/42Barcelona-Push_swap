@@ -15,12 +15,15 @@
 static void	s(t_stack *stack)
 {
 	int	num;
+	int	index;
 
 	if (!stack)
 		return;	
 	num = stack->next->num;
+	index = stack->next->index;
 	stack->next->num = stack->num;
 	stack->num = num;
+	stack->index = index;
 }
 
 int	sa(t_meta *meta)

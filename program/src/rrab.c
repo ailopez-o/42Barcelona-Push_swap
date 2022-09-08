@@ -16,17 +16,25 @@
 static void	rr(t_stack *stack)
 {
 	int		num;
+	int	index;	
 	
 	if (!stack)
 		return;
 	stack = stack_lstlast(stack);
 	num = stack->num;
+	index = stack->index;	
 	while (stack)
 	{
 		if (stack->pre == NULL)
+		{			
 			stack->num = num;
+			stack->index = index;
+		}
 		else
+		{
 			stack->num = stack->pre->num;
+			stack->index = stack->pre->index;
+		}
 		stack = stack->pre;
 	}
 }

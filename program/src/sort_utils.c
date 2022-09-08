@@ -61,7 +61,7 @@ int are_values(t_stack *stack, int key_nbr)
     exist = 0;
     while (stack)
     {
-        if (stack->num < key_nbr)
+        if (stack->index < key_nbr)
             exist = 1;
         stack = stack->next;
     }
@@ -69,9 +69,9 @@ int are_values(t_stack *stack, int key_nbr)
 }
 
 
-int best_rr(t_meta *meta, int index, int stack_size,int side)
+void best_rr(t_meta *meta, int stack_size, int pos,int side)
 {
-    if (index > stack_size/2)
+    if (pos > (stack_size / 2))
     {
         if (side == STACKA)
             rra(meta);
@@ -85,5 +85,4 @@ int best_rr(t_meta *meta, int index, int stack_size,int side)
         else
             rb(meta);
     }
-    return (1);
 }

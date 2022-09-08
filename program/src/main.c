@@ -75,7 +75,7 @@ void	console(t_meta *meta)
 int	main(int argv, char **argc)
 {
 	t_meta	meta;
-	t_stack	*print;
+	//t_stack	*print;
 
 	if (argv < 2)
 		return (0);
@@ -90,6 +90,7 @@ int	main(int argv, char **argc)
 	}
 	stack_ini(&meta, argc);
 	index_list(meta.stack_a);
+	/*
 	print = meta.stack_a;
 	while (print)
 	{
@@ -97,6 +98,7 @@ int	main(int argv, char **argc)
 		print = print->next;
 	}
 	//printf("values [%d]\n", meta.stack_size);
+	*/
 	if (meta.gui)
 		gui_loop(&meta);
 	else

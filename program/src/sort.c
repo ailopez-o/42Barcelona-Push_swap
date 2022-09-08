@@ -18,35 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-int quick_sort_10(t_meta *meta)
-{
-    int index;
-    int min;
-    int stack_size;
-
-    stack_size = meta->stack_size;
-    while (meta->stack_a)
-    {
-        min = get_min(meta->stack_a);
-        index = get_index(meta->stack_a, min);
-        while (meta->stack_a->num != min)
-        {
-            if (index > stack_size/2)
-                rra(meta);
-            else
-                ra(meta);
-        }
-
-        stack_size--;
-        pb(meta);
-    }
-    while (meta->stack_b)
-        pa(meta);
-    return (1);
-}
-
-*/
+#define BLOCK_SIZE  25
 
 void index_list(t_stack *stack)
 {
@@ -72,14 +44,22 @@ void index_list(t_stack *stack)
     }
 }
 
-int sort_key_nbr(t_meta *meta, int key_nbr)
+int sort_key_nbr(t_meta *meta, int num_slot, int slot_size)
 {
+    int key_nbr;
+
+    key_nbr = slot_size * num_slot;
     while (are_values(meta->stack_a, key_nbr))
     {        
-        if (meta->stack_a->num < key_nbr)
+        if (meta->stack_a->index < key_nbr)
          {
-            pb(meta);
-
+            if (meta->stack_a->index < (key_nbr - (slot_size / 2)))
+            {
+                pb(meta);
+                rb(meta);
+            }
+            else
+                pb(meta);
          }   
         else
             ra(meta);
@@ -88,11 +68,23 @@ int sort_key_nbr(t_meta *meta, int key_nbr)
 }
 
 
+int get_pos(t_stack *stack, int index)
+{
+    int pos;
+
+    pos = 0;
+    while(stack->index != index)
+    {
+        stack = stack->next;
+        pos++;
+    }
+    return(pos);
+}
 
 void quick_sort(t_meta *meta, int side)
 {
     int index;
-    int value;
+    int pos;
     int stack_size;
     t_stack *stack;
 
@@ -102,12 +94,12 @@ void quick_sort(t_meta *meta, int side)
     stack_size = stack_lstsize(stack);        
     while (stack)
     {
-        value = get_min(stack);
+        index = get_min_index(stack);
         if (side == STACKB)
-            value = get_max(stack);
-        index = get_index(stack, value);
-        while (stack->num != value)
-            best_rr(meta, index, stack_size, side);
+            index = get_max_index(stack);
+        pos = get_pos(stack, index);
+        while (stack->index != index)
+            best_rr(meta,stack_size, pos, side);
         stack_size--;
         stack = push_side(meta, side);
     }
@@ -116,18 +108,18 @@ void quick_sort(t_meta *meta, int side)
 
 int chop_sort(t_meta *meta)
 {
-    int key_nbr;
-    int size;
+    //int key_nbr;
+    //int size;
     int i;
     int slots;
 
-    slots = (meta->stack_size / 25);
-    size = (get_max(meta->stack_a) - get_min(meta->stack_a)) / slots;
+    slots = (meta->stack_size / BLOCK_SIZE);
+    //size = (get_max(meta->stack_a) - get_min(meta->stack_a)) / slots;
     i = 1;
     while (i < slots)
     {
-        key_nbr = meta->min + (size * i);
-        sort_key_nbr(meta, key_nbr);
+        //key_nbr = meta->min + (size * i);
+        sort_key_nbr(meta, i, BLOCK_SIZE);
         i++;
     }
     quick_sort(meta, STACKA);

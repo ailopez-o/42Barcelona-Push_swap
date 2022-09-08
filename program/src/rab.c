@@ -16,16 +16,24 @@
 static void r(t_stack *stack)
 {
 	int	num;
+	int	index;
 
 	if (!stack)
 		return;
 	num = stack->num;
+	index = stack->index;
 	while (stack)
 	{
 		if (stack->next == NULL)
+		{
 			stack->num = num;
+			stack->index = index;
+		}
 		else
+		{
 			stack->num = stack->next->num;
+			stack->index = stack->next->index;
+		}
 		stack = stack->next;
 	}
 }
