@@ -21,10 +21,10 @@
 #include "../inc/gui_utils.h"
 #include <stddef.h>
 
-
 int	stack_ini(t_meta *meta, char **values)
 {
-	int		i;
+	int	i;
+	int	num;
 	t_stack	*new;
 
 	meta->stack_a = NULL;
@@ -32,7 +32,9 @@ int	stack_ini(t_meta *meta, char **values)
 	i = 1;
 	while (values[i])
 	{
-		new = stack_lstnew(ft_atoi(values[i]));
+		if (ft_atoi_ex(values[i], &num) == 0)
+			return (0);
+		new = stack_lstnew(num);
 		stack_lstadd_back(&meta->stack_a, new);
 		i++;
 	}
@@ -97,7 +99,8 @@ int	main(int argv, char **argc)
 		argc++;
 		gui_init(&meta);
 	}
-	stack_ini(&meta, argc);
+	if (stack_ini(&meta, argc) == 0)
+		return (0);
 	if (stack_is_sorted(meta.stack_a))
 		return(0);
 	index_list(meta.stack_a);

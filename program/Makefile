@@ -94,7 +94,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 
 $(LIBFT):
-	@make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR) complete
 	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"	
 
 $(MINILIBX):
