@@ -47,22 +47,37 @@ void index_list(t_stack *stack)
 int sort_key_nbr(t_meta *meta, int num_slot, int slot_size)
 {
     int key_nbr;
+    int r_hold;
 
+    r_hold = 0;
     key_nbr = slot_size * num_slot;
     while (are_values(meta->stack_a, key_nbr))
     {        
         if (meta->stack_a->index < key_nbr)
          {
+            if (r_hold == 1)
+            {
+                rb(meta);
+                r_hold = 0; 
+            }
             if (meta->stack_a->index < (key_nbr - (slot_size / 2)))
             {
                 pb(meta);
-                rb(meta);
+                r_hold = 1;
             }
             else
                 pb(meta);
          }   
         else
-            ra(meta);
+        {
+            if (r_hold == 1)
+            {
+                rr(meta);
+                r_hold = 0; 
+            }
+            else
+                ra(meta);
+        }
     }
     return (1);
 }
@@ -108,18 +123,19 @@ void quick_sort(t_meta *meta, int side)
 
 int chop_sort(t_meta *meta)
 {
-    //int key_nbr;
-    //int size;
     int i;
     int slots;
+    int slot_size;
 
-    slots = (meta->stack_size / BLOCK_SIZE);
-    //size = (get_max(meta->stack_a) - get_min(meta->stack_a)) / slots;
+    slot_size = 25;
+    if (meta->stack_size > 250)
+       slot_size = 45;
+
+    slots = (meta->stack_size / slot_size);
     i = 1;
     while (i < slots)
     {
-        //key_nbr = meta->min + (size * i);
-        sort_key_nbr(meta, i, BLOCK_SIZE);
+        sort_key_nbr(meta, i, slot_size);
         i++;
     }
     quick_sort(meta, STACKA);
