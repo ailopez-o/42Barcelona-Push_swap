@@ -75,10 +75,19 @@ void	console(t_meta *meta)
 int	main(int argv, char **argc)
 {
 	t_meta	meta;
+	//int i;
 	//t_stack	*print;
 
 	if (argv < 2)
 		return (0);
+	/*
+	i = 1;
+	while (i < argv)
+	{
+		printf("arg[%d]->[%s]\n", i, argc[i]);
+		i++;
+	}
+	*/
 	meta.gui = 0;
 	meta.print_ops = 1;
 	meta.print_stack = 0;	
@@ -89,6 +98,8 @@ int	main(int argv, char **argc)
 		gui_init(&meta);
 	}
 	stack_ini(&meta, argc);
+	if (stack_is_sorted(meta.stack_a))
+		return(0);
 	index_list(meta.stack_a);
 	/*
 	print = meta.stack_a;

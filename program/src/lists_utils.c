@@ -16,15 +16,15 @@ int	stack_is_sorted(t_stack *first)
 	t_stack	*stack;
 
 	if (!first)
-		return (0);
+		return (1);
 	stack = first;
 	while (stack->next)
 	{
 		if (stack->num >= stack->next->num)
-			return (1);
+			return (0);
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	stack_lstsize(t_stack *lst)

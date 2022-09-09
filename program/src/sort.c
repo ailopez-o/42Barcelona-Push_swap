@@ -44,6 +44,32 @@ void index_list(t_stack *stack)
     }
 }
 
+
+
+
+int search_closest_value(t_meta *meta, int key_nbr)
+{
+    t_stack *stack;
+    int     num_moves_r;
+    int     stack_size;
+
+    num_moves_r = 0;
+    stack = meta->stack_a;
+    stack_size = stack_lstsize(stack); 
+    while (stack)
+    {
+        if (stack->index <= key_nbr)
+            break;
+        num_moves_r ++;
+        stack = stack->next; 
+    }
+
+    if (num_moves_r > (stack_size / 2))
+        return (1);
+    else
+        return (0);
+}
+
 int sort_key_nbr(t_meta *meta, int num_slot, int slot_size)
 {
     int key_nbr;
