@@ -15,8 +15,8 @@
 
 NAME		:= push_swap
 
-PUSH_SWAP_DIR := program/
-CHECKER_DIR := checker/
+PUSH_SWAP_DIR := srcs/mandatory/
+CHECKER_DIR := srcs/checker/
 
 
 # Colors
