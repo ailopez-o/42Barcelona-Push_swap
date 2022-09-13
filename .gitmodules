@@ -1,12 +1,12 @@
 [submodule "program/lib/libft"]
-	path = program/lib/libft
+	path = lib/libft
 	url = git@github.com:ailopez-o/42Barcelona-Libft.git
 [submodule "program/testers/LeoFu9487"]
-	path = program/testers/LeoFu9487
+	path = testers/LeoFu9487
 	url = https://github.com/LeoFu9487/push_swap_tester.git
 [submodule "program/testers/Laisarena"]
-	path = program/testers/Laisarena
+	path = testers/Laisarena
 	url = https://github.com/laisarena/push_swap_tester.git
 [submodule "program/testers/lmalki"]
-	path = program/testers/lmalki
+	path = testers/lmalki
 	url = https://github.com/lmalki-h/push_swap_tester.git
