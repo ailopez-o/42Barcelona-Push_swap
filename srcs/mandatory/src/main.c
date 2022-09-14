@@ -75,6 +75,12 @@ void	console(t_meta *meta)
 	stack_lstfree(&meta->stack_b);
 }
 
+void	error(char	*str)
+{
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	exit (0);
+}
 
 int	main(int argv, char **argc)
 {
@@ -83,7 +89,7 @@ int	main(int argv, char **argc)
 	//t_stack	*print;
 
 	if (argv < 2)
-		return (0);
+		error ("Error");
 	/*
 	i = 1;
 	while (i < argv)
@@ -102,7 +108,7 @@ int	main(int argv, char **argc)
 		gui_init(&meta);
 	}
 	if (stack_ini(&meta, argc) == 0)
-		return (0);
+		error ("Error");
 	if (stack_is_sorted(meta.stack_a))
 		return(0);
 	index_list(meta.stack_a);
