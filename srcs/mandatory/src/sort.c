@@ -45,8 +45,6 @@ void index_list(t_stack *stack)
 }
 
 
-
-
 int search_closest_value(t_meta *meta, int key_nbr)
 {
     t_stack *stack;
@@ -125,24 +123,49 @@ int get_pos(t_stack *stack, int index)
 void quick_sort(t_meta *meta, int side)
 {
     int index;
+    int close_index;
     int pos;
-    int stack_size;
+    int swap;
     t_stack *stack;
 
     stack = meta->stack_a;
     if (side == STACKB)
-        stack = meta->stack_b;
-    stack_size = stack_lstsize(stack);        
+        stack = meta->stack_b;     
     while (stack)
     {
+        // Busco el Index más bajo/alto en el stack
         index = get_min_index(stack);
+        close_index = index + 1;
         if (side == STACKB)
+        {
             index = get_max_index(stack);
+            close_index = index - 1;
+        }
+        // Busco la posicion en la que se encuantra
         pos = get_pos(stack, index);
+        // Mientras que no enconremos, rotamos de la manera más eficiente
+        swap = 0;
         while (stack->index != index)
-            best_rr(meta,stack_size, pos, side);
-        stack_size--;
+        {
+           // detectamos si por el camino enconramos el index consecutivo al buscado
+            if (stack->index == close_index)
+            {
+                swap = 1;
+                stack = push_side(meta, side);
+                printf("optimicing\n");
+                pos = get_pos(stack, index);
+            }        
+            best_rr(meta, pos, side);
+        }
         stack = push_side(meta, side);
+        if (swap == 1)
+        {   
+            swap = 0;
+            if (side == STACKA)
+                sb(meta);
+            if (side == STACKB)
+                sa(meta);
+        }
     }
 }
 

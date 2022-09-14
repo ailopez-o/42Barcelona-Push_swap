@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../inc/instructions.h"
+#include "../inc/lst_utils.h"
 
 int get_index(t_stack *stack, int value)
 {
@@ -69,8 +70,13 @@ int are_values(t_stack *stack, int key_nbr)
 }
 
 
-void best_rr(t_meta *meta, int stack_size, int pos,int side)
+void best_rr(t_meta *meta, int pos, int side)
 {
+    int stack_size;
+    
+    stack_size = stack_lstsize(meta->stack_a);
+    if (side == STACKB)
+        stack_size = stack_lstsize(meta->stack_b);
     if (pos > (stack_size / 2))
     {
         if (side == STACKA)
