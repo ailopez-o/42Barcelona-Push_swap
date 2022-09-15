@@ -74,6 +74,8 @@ void best_rr(t_meta *meta, int pos, int side)
 {
     int stack_size;
     
+    if (pos == 0)
+        return;
     stack_size = stack_lstsize(meta->stack_a);
     if (side == STACKB)
         stack_size = stack_lstsize(meta->stack_b);

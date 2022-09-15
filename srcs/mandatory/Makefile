@@ -53,10 +53,10 @@ SRC_FILES	=	main \
 				lists \
 				lists_utils \
 				print \
-				rab \
-				rrab \
-				sab \
-				pab \
+				ops_rab \
+				ops_rrab \
+				ops_sab \
+				ops_pab \
 				gui \
 				gui_utils \
 				draw \

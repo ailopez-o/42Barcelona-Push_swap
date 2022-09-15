@@ -149,12 +149,11 @@ void quick_sort(t_meta *meta, int side)
         {
            // detectamos si por el camino enconramos el index consecutivo al buscado
             if (stack->index == close_index)
-            {
-                swap = 1;
-                stack = push_side(meta, side);
-                printf("optimicing\n");
-                pos = get_pos(stack, index);
-            }        
+             {
+                 swap = 1;
+                 stack = push_side(meta, side);
+                 pos = get_pos(stack, index);
+             }
             best_rr(meta, pos, side);
         }
         stack = push_side(meta, side);
@@ -178,18 +177,17 @@ int chop_sort(t_meta *meta)
 
     slot_size = 25;
     if (meta->stack_size > 250)
-       slot_size = 45;
-
+        slot_size = 45;
     slots = (meta->stack_size / slot_size);
+    if (meta->stack_size % slot_size > 0)
+        slots ++;
     i = 1;
-    while (i < slots)
+    while (i <= slots)
     {
         sort_key_nbr(meta, i, slot_size);
         i++;
     }
-    quick_sort(meta, STACKA);
     quick_sort(meta, STACKB);    
-
     return (1);
 }
 

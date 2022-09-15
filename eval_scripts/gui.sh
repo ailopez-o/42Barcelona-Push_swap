@@ -1,0 +1,1 @@
+./push_swap -g $(ruby -e "puts (-50..50).to_a.shuffle.join(' ')")  
