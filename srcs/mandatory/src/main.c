@@ -21,7 +21,33 @@
 #include "../inc/gui_utils.h"
 #include <stddef.h>
 
-// testing branch
+int	duplicate_values(t_stack *stack)
+{
+	t_stack *stack_loop;
+
+	while (stack)
+	{
+		stack_loop = stack->next;
+		while (stack_loop)
+		{
+			if (stack->num == stack_loop->num)
+				return (1);
+			stack_loop = stack_loop->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
+}
+
+void get_values(t_meta *meta)
+{
+	meta->stack_size = stack_lstsize(meta->stack_a);
+	meta->max = get_max(meta->stack_a);
+	meta->min = get_min(meta->stack_a);
+	meta->abs = get_abs(meta->min, meta->max);
+	meta->neg = are_negatives(meta->stack_a);
+	meta->numops = 0;
+}
 
 int	stack_ini(t_meta *meta, char **values)
 {
@@ -40,12 +66,9 @@ int	stack_ini(t_meta *meta, char **values)
 		stack_lstadd_back(&meta->stack_a, new);
 		i++;
 	}
-	meta->stack_size = stack_lstsize(meta->stack_a);
-	meta->max = get_max(meta->stack_a);
-	meta->min = get_min(meta->stack_a);
-	meta->abs = get_abs(meta->min, meta->max);
-	meta->neg = are_negatives(meta->stack_a);
-	meta->numops = 0;
+	if (duplicate_values(meta->stack_a))
+		return (0);
+	get_values(meta);
 	return (1);
 }
 
@@ -85,19 +108,9 @@ void	error(char	*str)
 int	main(int argv, char **argc)
 {
 	t_meta	meta;
-	//int i;
-	//t_stack	*print;
 
 	if (argv < 2)
 		error ("Error");
-	/*
-	i = 1;
-	while (i < argv)
-	{
-		printf("arg[%d]->[%s]\n", i, argc[i]);
-		i++;
-	}
-	*/
 	meta.gui = 0;
 	meta.print_ops = 1;
 	meta.print_stack = 0;	
@@ -112,15 +125,6 @@ int	main(int argv, char **argc)
 	if (stack_is_sorted(meta.stack_a))
 		return(0);
 	index_list(meta.stack_a);
-	/*
-	print = meta.stack_a;
-	while (print)
-	{
-		printf("Value [%d] - Index [%d]\n", print->num, print->index);
-		print = print->next;
-	}
-	//printf("values [%d]\n", meta.stack_size);
-	*/
 	if (meta.gui)
 		gui_loop(&meta);
 	else
