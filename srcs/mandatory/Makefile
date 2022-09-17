@@ -78,7 +78,7 @@ all:	$(NAME)
 $(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 			make -sC $(LIBFT_DIR)			
 			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
-			@echo "👉 $(BLUE)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
+			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
 			@echo "$(GREEN)✨ push_swap compiled!$(DEF_COLOR)"
 
 			

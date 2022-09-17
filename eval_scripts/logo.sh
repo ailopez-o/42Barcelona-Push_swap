@@ -15,16 +15,14 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-./$(dirname "$0")/logo.sh
-
-printf "${ORANGE}\n\nCOMPILE ++++++++++++\n\n${NOCOLOR}"
-
-Make re
-
-printf "${ORANGE}\n\nTESTING ++++++++++++\n\n${NOCOLOR}"
-
-./$(dirname "$0")/basic.sh
-./$(dirname "$0")/errors.sh
-./$(dirname "$0")/numops.sh
-
-./$(dirname "$0")/logo.sh
+printf "${CYAN}\n"
+printf "     ,     ,       \n"
+printf "    (\____/)       \n" 
+printf "     (_oo_)        \n"
+printf "       (O)         \n"
+printf "     __||__    \)  \n"
+printf "  []/______\[] /   \n"
+printf "  / \______/ \/    \n"
+printf " /    /__\         \n"
+printf "(\   /____\        \n"
+printf "${NOCOLOR}\n"

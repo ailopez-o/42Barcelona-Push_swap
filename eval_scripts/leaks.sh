@@ -1,0 +1,1 @@
+leaks --atExit -- ./push_swap $(ruby -e "puts (-50..50).to_a.shuffle.join(' ')")
