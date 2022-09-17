@@ -15,12 +15,12 @@ LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
-printf "${LIGHTPURPLE}Compiling\n${NOCOLOR}"
+printf "${ORANGE}\n\nCOMPILE ++++++++++++\n\n${NOCOLOR}"
 
+Make re
 
-printf "${LIGHTGREEN}Testing\n${NOCOLOR}"
+printf "${ORANGE}\n\nTESTING ++++++++++++\n\n${NOCOLOR}"
 
 ./$(dirname "$0")/basic.sh
-./$(dirname "$0")/limits.sh
 ./$(dirname "$0")/errors.sh
-./$(dirname "$0")/500_numops.sh
+./$(dirname "$0")/numops.sh

@@ -17,21 +17,21 @@ WHITE='\033[1;37m'
 
 
 printf "${LIGHTBLUE}\n<=> Sorted List\n${NOCOLOR}"
-printf "${YELLOW}\n./push_swap 42 -> ${NOCOLOR}"
+printf "${PURPLE}\n./push_swap 42 -> ${NOCOLOR}"
 ./push_swap 42
-printf "${YELLOW}\n./push_swap 0 1 2 3 -> ${NOCOLOR}"
+printf "${PURPLE}\n./push_swap 0 1 2 3 -> ${NOCOLOR}"
 ./push_swap 0 1 2 3
-printf "${YELLOW}\n./push_swap 0 1 2 3 4 5 6 7 8 9 -> ${NOCOLOR}"
+printf "${PURPLE}\n./push_swap 0 1 2 3 4 5 6 7 8 9 -> ${NOCOLOR}"
 ./push_swap 0 1 2 3 4 5 6 7 8 9
 printf "${LIGHTBLUE}\n\n<=> Sorting Lists\n${NOCOLOR}"
-printf "${YELLOW}\nARG=\"1 5 2 4 3\"; ./push_swap $ARG | ./checker$ARG  ${NOCOLOR}"
+printf "${CYAN}\nARG=\"1 5 2 4 3\"; ./push_swap $ARG | ./checker$ARG  ${NOCOLOR}"
 var1=$(ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker $ARG)
 var2=$(ARG="1 5 2 4 3"; ./push_swap $ARG | awk 'END{print NR}')
 printf "${LIGHTGREEN}\nCHECKER $var1 -> $var2 ops\n${NOCOLOR}"
 
 for ((num = 0; num <= 5; num++)); do
     ARG=$(ruby -e "puts (-2..4).to_a.shuffle.join(' ')")
-    printf "${YELLOW}\nARGS[$ARG]${NOCOLOR}"
+    printf "${CYAN}\nARGS[$ARG]${NOCOLOR}"
     var1=$(./push_swap $ARG | ./checker $ARG)
     var2=$(./push_swap $ARG | awk 'END{print NR}')
     printf "${LIGHTGREEN}\nCHECKER $var1 -> $var2 ops\n${NOCOLOR}"
