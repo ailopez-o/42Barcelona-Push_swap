@@ -29,8 +29,30 @@ var1=$(ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker $ARG)
 var2=$(ARG="1 5 2 4 3"; ./push_swap $ARG | awk 'END{print NR}')
 printf "${LIGHTGREEN}\nCHECKER $var1 -> $var2 ops\n${NOCOLOR}"
 
+printf "${ORANGE}\n+++++ 3 numbers\n${NOCOLOR}"
+
 for ((num = 0; num <= 5; num++)); do
-    ARG=$(ruby -e "puts (-2..4).to_a.shuffle.join(' ')")
+    ARG=$(ruby -e "puts (51..53).to_a.shuffle.join(' ')")
+    printf "${CYAN}\nARGS[$ARG]${NOCOLOR}"
+    var1=$(./push_swap $ARG | ./checker $ARG)
+    var2=$(./push_swap $ARG | awk 'END{print NR}')
+    printf "${LIGHTGREEN}\nCHECKER $var1 -> $var2 ops\n${NOCOLOR}"
+done
+
+printf "${ORANGE}\n+++++ 5 numbers\n${NOCOLOR}"
+
+for ((num = 0; num <= 5; num++)); do
+    ARG=$(ruby -e "puts (-2..2).to_a.shuffle.join(' ')")
+    printf "${CYAN}\nARGS[$ARG]${NOCOLOR}"
+    var1=$(./push_swap $ARG | ./checker $ARG)
+    var2=$(./push_swap $ARG | awk 'END{print NR}')
+    printf "${LIGHTGREEN}\nCHECKER $var1 -> $var2 ops\n${NOCOLOR}"
+done
+
+printf "${ORANGE}\n+++++ 10 numbers\n${NOCOLOR}"
+
+for ((num = 0; num <= 5; num++)); do
+    ARG=$(ruby -e "puts (-2..7).to_a.shuffle.join(' ')")
     printf "${CYAN}\nARGS[$ARG]${NOCOLOR}"
     var1=$(./push_swap $ARG | ./checker $ARG)
     var2=$(./push_swap $ARG | awk 'END{print NR}')

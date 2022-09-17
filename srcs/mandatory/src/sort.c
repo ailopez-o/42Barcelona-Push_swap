@@ -120,6 +120,42 @@ int get_pos(t_stack *stack, int index)
     return(pos);
 }
 
+/*
+case1 : [2,1,3]->sa->[1,2,3].
+case2 : [3,2,1]->sa->[2,3,1]->rra->[1,2,3].
+case3: [3,1,2]->ra->[1,2,3].
+case4 : [1,3,2]->sa->[3,1,2]->ra->[1,2,3].
+case5 : [2,3,1]->rra->[1,2,3].
+*/
+
+
+void    sort_3_stack_A(t_meta *meta)
+{
+    t_stack *stack;
+    int index;
+
+    stack = meta->stack_a;
+    index = get_min_index(stack);
+
+    if (stack->index == index + 1 && stack->next->index == index && stack->next->next->index == index + 2)
+        sa(meta);
+    if (stack->index == index + 2 && stack->next->index == index + 1 && stack->next->next->index == index)
+    {
+        sa(meta);
+        rra(meta);
+    } 
+    if (stack->index == index + 2 && stack->next->index == index && stack->next->next->index == index + 1)
+        ra(meta);
+    if (stack->index == index && stack->next->index == index + 2 && stack->next->next->index == index + 1)
+    {
+        sa(meta);
+        ra(meta);
+    }
+    if (stack->index == index + 1 && stack->next->index == index + 2 && stack->next->next->index == index)
+        rra(meta);
+}
+
+
 void smart_sort(t_meta *meta, int side)
 {
     int index;
@@ -165,9 +201,13 @@ void smart_sort(t_meta *meta, int side)
             if (side == STACKB)
                 sa(meta);
         }
+        if ((side == STACKA) && stack_lstsize(meta->stack_a) == 3)
+        {
+            sort_3_stack_A(meta);
+            return;
+        }
     }
 }
-
 
 int sloted_sort(t_meta *meta)
 {
@@ -191,44 +231,12 @@ int sloted_sort(t_meta *meta)
     return (1);
 }
 
-/*
-case1 : [2,1,3]->sa->[1,2,3].
-case2 : [3,2,1]->sa->[2,3,1]->rra->[1,2,3].
-case3: [3,1,2]->ra->[1,2,3].
-case4 : [1,3,2]->sa->[3,1,2]->ra->[1,2,3].
-case5 : [2,3,1]->rra->[1,2,3].
-*/
-
-void    sort_3(t_meta *meta)
-{
-    t_stack *stack;
-
-    stack = meta->stack_a;
-
-    if (stack->index == 1 && stack->next->index == 0 && stack->next->next->index == 2)
-        sa(meta);
-    if (stack->index == 2 && stack->next->index == 1 && stack->next->next->index == 0)
-    {
-        sa(meta);
-        rra(meta);
-    } 
-    if (stack->index == 2 && stack->next->index == 0 && stack->next->next->index == 1)
-        ra(meta);
-    if (stack->index == 0 && stack->next->index == 2 && stack->next->next->index == 1)
-    {
-        sa(meta);
-        ra(meta);
-    }
-    if (stack->index == 1 && stack->next->index == 2 && stack->next->next->index == 0)
-        rra(meta);
-}
-
 int sort(t_meta *meta)
 {
     if (meta->stack_size < 3)
         sa(meta);
     else if (meta->stack_size < 4)
-        sort_3(meta);
+        sort_3_stack_A(meta);
     else if (meta->stack_size < 25)
     {
         smart_sort(meta, STACKA);

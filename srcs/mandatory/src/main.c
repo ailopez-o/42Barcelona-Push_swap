@@ -109,8 +109,8 @@ int	main(int argv, char **argc)
 {
 	t_meta	meta;
 
-	if (argv < 2)
-		error ("Error");
+	if (argv == 1)
+		return(0);
 	meta.gui = 0;
 	meta.print_ops = 1;
 	meta.print_stack = 0;	
