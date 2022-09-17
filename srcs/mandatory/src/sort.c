@@ -68,7 +68,7 @@ int search_closest_value(t_meta *meta, int key_nbr)
         return (0);
 }
 
-int sort_key_nbr(t_meta *meta, int num_slot, int slot_size)
+int pre_sort_slot(t_meta *meta, int num_slot, int slot_size)
 {
     int key_nbr;
     int r_hold;
@@ -120,7 +120,7 @@ int get_pos(t_stack *stack, int index)
     return(pos);
 }
 
-void quick_sort(t_meta *meta, int side)
+void smart_sort(t_meta *meta, int side)
 {
     int index;
     int close_index;
@@ -169,7 +169,7 @@ void quick_sort(t_meta *meta, int side)
 }
 
 
-int chop_sort(t_meta *meta)
+int sloted_sort(t_meta *meta)
 {
     int i;
     int slots;
@@ -184,22 +184,57 @@ int chop_sort(t_meta *meta)
     i = 1;
     while (i <= slots)
     {
-        sort_key_nbr(meta, i, slot_size);
+        pre_sort_slot(meta, i, slot_size);
         i++;
     }
-    quick_sort(meta, STACKB);    
+    smart_sort(meta, STACKB);    
     return (1);
+}
+
+/*
+case1 : [2,1,3]->sa->[1,2,3].
+case2 : [3,2,1]->sa->[2,3,1]->rra->[1,2,3].
+case3: [3,1,2]->ra->[1,2,3].
+case4 : [1,3,2]->sa->[3,1,2]->ra->[1,2,3].
+case5 : [2,3,1]->rra->[1,2,3].
+*/
+
+void    sort_3(t_meta *meta)
+{
+    t_stack *stack;
+
+    stack = meta->stack_a;
+
+    if (stack->index == 1 && stack->next->index == 0 && stack->next->next->index == 2)
+        sa(meta);
+    if (stack->index == 2 && stack->next->index == 1 && stack->next->next->index == 0)
+    {
+        sa(meta);
+        rra(meta);
+    } 
+    if (stack->index == 2 && stack->next->index == 0 && stack->next->next->index == 1)
+        ra(meta);
+    if (stack->index == 0 && stack->next->index == 2 && stack->next->next->index == 1)
+    {
+        sa(meta);
+        ra(meta);
+    }
+    if (stack->index == 1 && stack->next->index == 2 && stack->next->next->index == 0)
+        rra(meta);
 }
 
 int sort(t_meta *meta)
 {
-
-    if (meta->stack_size < 25)
+    if (meta->stack_size < 3)
+        sa(meta);
+    else if (meta->stack_size < 4)
+        sort_3(meta);
+    else if (meta->stack_size < 25)
     {
-        quick_sort(meta, STACKA);
-        quick_sort(meta, STACKB); 
+        smart_sort(meta, STACKA);
+        smart_sort(meta, STACKB); 
     }
     else 
-        chop_sort(meta);
+        sloted_sort(meta);
     return (1);
 }
