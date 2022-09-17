@@ -55,7 +55,7 @@ typedef struct s_point {
 typedef struct s_bar {
 	t_point	start;
 	t_point end;
-	int 	width;
+	float 	width;
 }	t_bar;
 
 typedef struct s_bitmap {

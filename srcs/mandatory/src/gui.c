@@ -107,8 +107,8 @@ int	draw_stack(t_meta *meta, int stack_side)
 			get_line_stack_a(&bar, stack->num, meta->abs, meta->neg);
 		if (stack_side == STACKB)
 			get_line_stack_b(&bar, stack->num, meta->abs, meta->neg);
-		bar.start.axis[Y] = bar.width * i;
-		bar.end.axis[Y] = bar.width * i;		
+		bar.start.axis[Y] = (bar.width + 0.6) * i;
+		bar.end.axis[Y] = (bar.width + 0.6) * i;		
 		draw_bar(meta, bar);
 		stack = stack->next;
 		i++;
