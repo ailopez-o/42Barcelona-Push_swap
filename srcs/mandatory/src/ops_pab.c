@@ -15,8 +15,8 @@
 int	pa(t_meta *meta)
 {
 	t_stack	*stack_orgtop;
-	t_stack **org;
-	t_stack **dest;
+	t_stack	**org;
+	t_stack	**dest;
 
 	org = &meta->stack_b;
 	dest = &meta->stack_a;
@@ -33,7 +33,7 @@ int	pa(t_meta *meta)
 	*dest = *org;
 	*org = stack_orgtop;
 	if (*org)
-		(*org)->pre = NULL;		
+		(*org)->pre = NULL;
 	gui(meta, "pa\n");
 	return (1);
 }
@@ -41,8 +41,8 @@ int	pa(t_meta *meta)
 int	pb(t_meta *meta)
 {
 	t_stack	*stack_orgtop;
-	t_stack **org;
-	t_stack **dest;
+	t_stack	**org;
+	t_stack	**dest;
 
 	org = &meta->stack_a;
 	dest = &meta->stack_b;
@@ -59,7 +59,7 @@ int	pb(t_meta *meta)
 	*dest = *org;
 	*org = stack_orgtop;
 	if (*org)
-		(*org)->pre = NULL;			
+		(*org)->pre = NULL;
 	gui(meta, "pb\n");
 	return (1);
 }

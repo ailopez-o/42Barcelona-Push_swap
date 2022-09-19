@@ -14,7 +14,7 @@
 #include "../inc/utils.h"
 #include <math.h>
 
-static void    set_color(char *buffer, int endian, int color, int alpha)
+static void	set_color(char *buffer, int endian, int color, int alpha)
 {
 	if (endian == 1)
 	{

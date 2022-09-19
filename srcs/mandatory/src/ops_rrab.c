@@ -15,14 +15,14 @@
 
 static void	rr(t_stack *stack)
 {
-	int		num;
-	int	index;	
-	
+	int	num;
+	int	index;
+
 	if (!stack)
-		return;
+		return ;
 	stack = stack_lstlast(stack);
 	num = stack->num;
-	index = stack->index;	
+	index = stack->index;
 	while (stack)
 	{
 		if (stack->pre == NULL)

@@ -17,9 +17,13 @@ WHITE='\033[1;37m'
 
 ./$(dirname "$0")/logo.sh
 
+printf "${ORANGE}\n\nNORMINETTE ++++++++++++\n\n${NOCOLOR}"
+
+./$(dirname "$0")/norm.sh
+
 printf "${ORANGE}\n\nCOMPILE ++++++++++++\n\n${NOCOLOR}"
 
-Make re
+#Make re
 
 printf "${ORANGE}\n\nTESTING ++++++++++++\n\n${NOCOLOR}"
 

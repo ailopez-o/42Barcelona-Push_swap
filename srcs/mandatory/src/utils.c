@@ -11,85 +11,83 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 
-int get_max(t_stack *stack)
+int	get_max(t_stack *stack)
 {
-    int max;
+	int	max;
 
-    max = stack->num;
-    while(stack)
-    {
-        if (max < stack->num)
-            max = stack->num;
-        stack = stack->next;
-    }
-    return(max);
+	max = stack->num;
+	while (stack)
+	{
+		if (max < stack->num)
+		max = stack->num;
+		stack = stack->next;
+	}
+	return (max);
 }
 
-int get_min(t_stack *stack)
+int	get_min(t_stack *stack)
 {
-    int min;
+	int	min;
 
-    min = stack->num;
-    while(stack)
-    {
-        if (min > stack->num)
-            min = stack->num;
-        stack = stack->next;
-    }
-    return(min);
+	min = stack->num;
+	while (stack)
+	{
+		if (min > stack->num)
+			min = stack->num;
+		stack = stack->next;
+	}
+	return (min);
 }
 
-int get_max_index(t_stack *stack)
+int	get_max_index(t_stack *stack)
 {
-    int max;
+	int	max;
 
-    max = stack->index;
-    while(stack)
-    {
-        if (max < stack->index)
-            max = stack->index;
-        stack = stack->next;
-    }
-    return(max);
+	max = stack->index;
+	while (stack)
+	{
+		if (max < stack->index)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
 }
 
-int get_min_index(t_stack *stack)
+int	get_min_index(t_stack *stack)
 {
-    int min;
+	int	min;
 
-    min = stack->index;
-    while(stack)
-    {
-        if (min > stack->index)
-            min = stack->index;
-        stack = stack->next;
-    }
-    return(min);
+	min = stack->index;
+	while (stack)
+	{
+		if (min > stack->index)
+			min = stack->index;
+		stack = stack->next;
+	}
+	return (min);
 }
 
-
-int are_negatives(t_stack *stack)
+int	are_negatives(t_stack *stack)
 {
-    while(stack)
-    {
-        if (stack->num < 0)
-            return(1);
-        stack = stack->next;
-    }
-    return (0);
+	while (stack)
+	{
+		if (stack->num < 0)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
 }
 
-int get_abs(int max, int min)
+int	get_abs(int max, int min)
 {
-    if (min < 0)
-        min = -min;
-    if (max < 0)
-        max = -max;        
-
-    if (min > max)
-        return (min);
-    else 
-        return (max);
+	if (min < 0)
+		min = -min;
+	if (max < 0)
+		max = -max;
+	if (min > max)
+		return (min);
+	else
+		return (max);
 }
 
 int	ft_round(double num)

@@ -1,1 +1,1 @@
-./push_swap -g $(ruby -e "puts (0..10).to_a.shuffle.join(' ')")  
+./push_swap -g $(ruby -e "puts (0..500).to_a.shuffle.join(' ')")  

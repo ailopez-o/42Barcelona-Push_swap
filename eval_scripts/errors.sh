@@ -29,4 +29,4 @@ printf "${PURPLE}./push_swap  -> ${NOCOLOR}"
 printf "${PURPLE}./push_swap 5 7 3 2147483648 9 1 -> ${NOCOLOR}"
 ./push_swap 5 7 3 2147483648 9 1
 printf "${PURPLE}./push_swap 5 7 3 -2147483649 9 1 -> ${NOCOLOR}"
-./push_swap 5 7 3 2147483648 9 1
+./push_swap 5 7 3 -2147483649 9 1

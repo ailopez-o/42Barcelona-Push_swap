@@ -27,6 +27,9 @@
 # define STACKA	0
 # define STACKB	1
 
+# define MIN_BLOCK_SIZE  25
+# define MAX_BLOCK_SIZE  45
+
 # define ROJO 		0xc1272d
 # define VERDE		0x33cc55
 # define FUCSIA 	0xff255c
@@ -39,10 +42,10 @@
 # define JAFFA		0xEF8633
 # define SAFFRON	0xF3AF3D
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	int				num;
-	int 			index;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*pre;
 }					t_stack;
@@ -54,8 +57,8 @@ typedef struct s_point {
 
 typedef struct s_bar {
 	t_point	start;
-	t_point end;
-	float 	width;
+	t_point	end;
+	float	width;
 }	t_bar;
 
 typedef struct s_bitmap {
@@ -88,4 +91,3 @@ typedef struct s_meta {
 }	t_meta;
 
 #endif
-

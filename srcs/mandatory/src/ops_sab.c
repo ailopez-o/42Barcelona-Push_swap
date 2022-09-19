@@ -18,7 +18,7 @@ static void	s(t_stack *stack)
 	int	index;
 
 	if (!stack)
-		return;	
+		return ;
 	num = stack->next->num;
 	index = stack->next->index;
 	stack->next->num = stack->num;
@@ -43,7 +43,7 @@ int	sb(t_meta *meta)
 int	ss(t_meta *meta)
 {
 	s(meta->stack_a);
-	s(meta->stack_b);	
+	s(meta->stack_b);
 	gui(meta, "ss\n");
 	return (1);
 }

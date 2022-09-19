@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: aitorlopezdeaudicana <marvin@42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 21:39:14 by aitoraudi         #+#    #+#             */
-/*   Updated: 2022/08/03 21:39:18 by aitoraudi        ###   ########.fr       */
+/*   Created: 2022/09/20 01:12:28 by aitorlope         #+#    #+#             */
+/*   Updated: 2022/09/20 01:12:32 by aitorlope        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef PARSER_H
+# define PARSER_H
 
-int	draw_line(t_meta *meta, t_point start, t_point end);
-int	my_putpixel(t_meta *meta, t_point pixel);
-int	generate_background(t_meta *meta, int backcolor);
+int	stack_ini(t_meta *meta, char **values);
 
 #endif

@@ -9,4 +9,9 @@
 /*   Updated: 2022/08/03 21:41:31 by aitoraudi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void	print_stack (t_stack *stack_a, t_stack *stack_b);
+#ifndef PRINT_H
+# define PRINT_H
+
+void	print_stack(t_stack *stack_a, t_stack *stack_b);
+
+#endif

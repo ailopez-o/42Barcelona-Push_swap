@@ -6,7 +6,7 @@
 /*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:37:40 by aitoraudi         #+#    #+#             */
-/*   Updated: 2022/08/03 21:37:42 by aitoraudi        ###   ########.fr       */
+/*   Updated: 2022/09/20 00:25:07 by aitorlope        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/defines.h"
@@ -40,4 +40,27 @@ int	stack_lstsize(t_stack *lst)
 		len++;
 	}
 	return (len);
+}
+
+void	index_list(t_stack *stack)
+{
+	int		index;
+	t_stack	*top;
+	t_stack	*tmp;
+
+	index = 0;
+	top = stack;
+	while (stack)
+	{
+		tmp = top;
+		while (tmp)
+		{
+			if (tmp->num < stack->num)
+				index++;
+			tmp = tmp->next;
+		}
+		stack->index = index;
+		stack = stack->next;
+		index = 0;
+	}
 }

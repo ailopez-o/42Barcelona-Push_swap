@@ -6,7 +6,7 @@
 /*   By: aitoraudicana <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:36:12 by aitoraudi         #+#    #+#             */
-/*   Updated: 2022/08/03 21:36:15 by aitoraudi        ###   ########.fr       */
+/*   Updated: 2022/09/20 00:20:16 by aitorlope        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/defines.h"
@@ -20,7 +20,7 @@
 #include "../inc/gui_utils.h"
 #include <math.h>
 
-int draw_bar(t_meta *meta, t_bar bar)
+int	draw_bar(t_meta *meta, t_bar bar)
 {
 	int	i;
 
@@ -28,18 +28,17 @@ int draw_bar(t_meta *meta, t_bar bar)
 	while (i < bar.width)
 	{
 		draw_line(meta, bar.start, bar.end);
-		bar.start.axis[Y]++;;
+		bar.start.axis[Y]++;
 		bar.end.axis[Y]++;
 		i++;
 	}
 	return (1);
 }
 
-
-void get_line_stack_a(t_bar *bar, int value, int max, int neg)
+void	get_line_stack_a(t_bar *bar, int value, int max, int neg)
 {
-	float len;
-	
+	float	len;
+
 	len = bar_len(value, max, neg);
 	if (value >= 0)
 	{
@@ -63,7 +62,7 @@ void get_line_stack_a(t_bar *bar, int value, int max, int neg)
 
 void	get_line_stack_b(t_bar *bar, int value, int max, int neg)
 {
-	float len;
+	float	len;
 
 	len = bar_len(value, max, neg);
 	if (value >= 0)
@@ -88,9 +87,9 @@ void	get_line_stack_b(t_bar *bar, int value, int max, int neg)
 
 int	draw_stack(t_meta *meta, int stack_side)
 {
-	int i;
+	int		i;
 	t_bar	bar;
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = meta->stack_a;
 	if (stack_side == STACKB)
@@ -98,7 +97,6 @@ int	draw_stack(t_meta *meta, int stack_side)
 	if (!stack)
 		return (0);
 	bar.width = (WINY) / meta->stack_size;
-	//printf("values [%d] - Width[%d]\n", meta->stack_size, bar.width);
 	i = 0;
 	while (stack)
 	{
@@ -108,7 +106,7 @@ int	draw_stack(t_meta *meta, int stack_side)
 		if (stack_side == STACKB)
 			get_line_stack_b(&bar, stack->num, meta->abs, meta->neg);
 		bar.start.axis[Y] = (bar.width + 0.6) * i;
-		bar.end.axis[Y] = (bar.width + 0.6) * i;		
+		bar.end.axis[Y] = (bar.width + 0.6) * i;
 		draw_bar(meta, bar);
 		stack = stack->next;
 		i++;
@@ -116,28 +114,25 @@ int	draw_stack(t_meta *meta, int stack_side)
 	return (1);
 }
 
-int draw_push_swap(t_meta *meta)
+int	draw_push_swap(t_meta *meta)
 {
 	char	*str;
 	char	*strnumops;
 	char	*print;
 
 	generate_background(meta, CARBON);
-	//draw_half(meta);
-    draw_stack(meta, STACKA);
+	draw_stack(meta, STACKA);
 	draw_stack(meta, STACKB);
-    mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
+	mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, \
 	meta->bitmap.img, 0, 0);
 	str = ft_strdup("operations: ");
 	strnumops = ft_itoa(meta->numops);
 	print = ft_strjoin(str, strnumops);
-	mlx_string_put(meta->vars.mlx, meta->vars.win, WINX - 200, WINY - 30, VERDE, print);
+	mlx_string_put(meta->vars.mlx, meta->vars.win, WINX - 200, \
+	WINY - 30, VERDE, print);
 	free (str);
 	free (strnumops);
 	free (print);
 	mlx_do_sync(meta->vars.mlx);
-    return (1);
+	return (1);
 }
-
-
-

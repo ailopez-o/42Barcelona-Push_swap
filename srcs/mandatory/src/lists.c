@@ -57,8 +57,6 @@ void	stack_lstadd_back(t_stack **lst, t_stack *new)
 		*lst = new;
 }
 
-
-
 void	stack_lstfree(t_stack **lst)
 {	
 	t_stack	*elem;
@@ -73,5 +71,3 @@ void	stack_lstfree(t_stack **lst)
 	}
 	*lst = NULL;
 }
-
-

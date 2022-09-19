@@ -59,10 +59,14 @@ SRC_FILES	=	main \
 				ops_pab \
 				gui \
 				gui_utils \
+				gui_init \
+				parser \
 				draw \
 				sort \
 				sort_utils \
-				utils
+				sort_slot \
+				sort_slot_utils \
+				utils \
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

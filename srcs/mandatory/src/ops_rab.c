@@ -13,13 +13,13 @@
 #include "../inc/lst_utils.h"
 #include "../inc/gui_utils.h"
 
-static void r(t_stack *stack)
+static void	r(t_stack *stack)
 {
 	int	num;
 	int	index;
 
 	if (!stack)
-		return;
+		return ;
 	num = stack->num;
 	index = stack->index;
 	while (stack)
@@ -42,14 +42,14 @@ int	ra(t_meta *meta)
 {
 	r(meta->stack_a);
 	gui(meta, "ra\n");
-	return (1);	
+	return (1);
 }
 
 int	rb(t_meta *meta)
 {
 	r(meta->stack_b);
 	gui(meta, "rb\n");
-	return (1);	
+	return (1);
 }
 
 int	rr(t_meta *meta)
