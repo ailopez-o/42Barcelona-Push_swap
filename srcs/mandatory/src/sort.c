@@ -156,6 +156,50 @@ void    sort_3_stack_A(t_meta *meta)
 }
 
 
+// void smart_sort_stack_A(t_stack *stack)
+// {
+//     int index;
+//     int close_index;
+//     int pos;
+//     int swap;
+//     t_stack *stack;
+  
+//     while (stack)
+//     {
+//         // Busco el Index más bajo en el stack
+//         index = get_min_index(stack);
+//         close_index = index + 1;
+//         // Busco la posicion en la que se encuantra
+//         pos = get_pos(stack, index);
+//         // Mientras que no enconremos, rotamos de la manera más eficiente
+//         swap = 0;
+//         while (stack->index != index)
+//         {
+//            // detectamos si por el camino enconramos el index consecutivo al buscado
+//             if (stack->index == close_index)
+//              {
+//                  swap = 1;
+//                  stack = push_side(meta, side);
+//                  pos = get_pos(stack, index);
+//              }
+//             best_rr(meta, pos, side);
+//         }
+//         stack = push_side(meta, side);
+//         if (swap)
+//         {   
+//             swap = 0;
+//             sb(meta);
+//         }
+//         if (stack_lstsize(stack) == 3)
+//         {
+//             sort_3_stack_A(meta);
+//             return;
+//         }
+//     }
+// }
+
+
+
 void smart_sort(t_meta *meta, int side)
 {
     int index;

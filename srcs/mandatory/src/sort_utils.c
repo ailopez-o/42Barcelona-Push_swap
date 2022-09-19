@@ -70,6 +70,29 @@ int are_values(t_stack *stack, int key_nbr)
 }
 
 
+// void best_rr(t_stack *stack, int pos, int side)
+// {
+//     int stack_size;
+    
+//     if (pos == 0)
+//         return;
+//     stack_size = stack_lstsize(stack);
+//     if (pos > (stack_size / 2))
+//     {
+//         if (side == STACKA)
+//             rra(meta);
+//         else
+//             rrb(meta);
+//     }
+//     else
+//     {
+//         if (side == STACKA)
+//             ra(meta);
+//         else
+//             rb(meta);
+//     }
+// }
+
 void best_rr(t_meta *meta, int pos, int side)
 {
     int stack_size;
