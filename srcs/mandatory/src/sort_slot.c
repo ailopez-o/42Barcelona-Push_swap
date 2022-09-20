@@ -14,6 +14,12 @@
 #include "../inc/sort_utils.h"
 #include "../inc/lst_utils.h"
 
+int	push_b_hold(t_meta *meta)
+{
+	pb(meta);
+	return (1);
+}
+
 /* This function iterate the stackA while are values in the Stack
 Each value lower than ´key_nbr´ is pushed to stackB.
 If the value pushed to stackB is the half-low index of the slot then is rotate 
@@ -34,25 +40,16 @@ void	pre_sort_slot(t_meta *meta, int num_slot, int slot_size)
 		if (meta->stack_a->index < key_nbr)
 		{
 			if (r_hold == 1)
-			{
-				rb(meta);
-				r_hold = 0;
-			}
+				r_hold = rb_or_rr(meta, 0);
 			if (meta->stack_a->index < (key_nbr - (slot_size / 2)))
-			{
-				pb(meta);
-				r_hold = 1;
-			}
+				r_hold = push_b_hold (meta);
 			else
 				pb(meta);
 		}
 		else
 		{
 			if (r_hold == 1)
-			{
-				rr(meta);
-				r_hold = 0;
-			}
+				r_hold = rb_or_rr(meta, 1);
 			else
 				ra(meta);
 		}

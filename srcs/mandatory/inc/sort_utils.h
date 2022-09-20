@@ -20,5 +20,6 @@ void	best_rr(t_meta *meta, int pos, int side);
 void	get_close_index(t_meta *meta, int *index, int *close_index, int *pos);
 int		is_close_index(t_stack *stack, t_meta *meta, int close_index, int *pos);
 int		push_close_value(t_meta *meta, t_stack **stack, int index, int *pos);
+int		rb_or_rr(t_meta *meta, int type_rr);
 
 #endif

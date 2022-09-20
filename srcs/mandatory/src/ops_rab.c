@@ -38,24 +38,21 @@ static void	r(t_stack *stack)
 	}
 }
 
-int	ra(t_meta *meta)
+void	ra(t_meta *meta)
 {
 	r(meta->stack_a);
 	gui(meta, "ra\n");
-	return (1);
 }
 
-int	rb(t_meta *meta)
+void	rb(t_meta *meta)
 {
 	r(meta->stack_b);
 	gui(meta, "rb\n");
-	return (1);
 }
 
-int	rr(t_meta *meta)
+void	rr(t_meta *meta)
 {
 	r(meta->stack_a);
 	r(meta->stack_b);
 	gui(meta, "rr\n");
-	return (1);
 }

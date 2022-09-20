@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/defines.h"
+#include "../inc/instructions.h"
 #include "../inc/gui_utils.h"
 
 static void	s(t_stack *stack)
@@ -26,24 +27,30 @@ static void	s(t_stack *stack)
 	stack->index = index;
 }
 
-int	sa(t_meta *meta)
+void	sa(t_meta *meta)
 {
 	s(meta->stack_a);
 	gui(meta, "sa\n");
-	return (1);
 }
 
-int	sb(t_meta *meta)
+void	sb(t_meta *meta)
 {
 	s(meta->stack_b);
 	gui(meta, "sb\n");
-	return (1);
 }
 
-int	ss(t_meta *meta)
+void	ss(t_meta *meta)
 {
 	s(meta->stack_a);
 	s(meta->stack_b);
 	gui(meta, "ss\n");
-	return (1);
+}
+
+void	sa_ra(t_meta *meta, int reverse)
+{
+	sa(meta);
+	if (reverse)
+		rra(meta);
+	else
+		ra(meta);
 }

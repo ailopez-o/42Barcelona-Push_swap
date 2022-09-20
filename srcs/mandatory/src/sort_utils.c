@@ -14,6 +14,15 @@
 #include "../inc/instructions.h"
 #include "../inc/lst_utils.h"
 
+int	rb_or_rr(t_meta *meta, int type_rr)
+{
+	if (type_rr)
+		rr(meta);
+	else
+		rb(meta);
+	return (0);
+}
+
 int	get_index(t_stack *stack, int value)
 {
 	int	pos;

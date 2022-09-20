@@ -39,21 +39,21 @@ static void	rr(t_stack *stack)
 	}
 }
 
-int	rra(t_meta *meta)
+void	rra(t_meta *meta)
 {
 	rr(meta->stack_a);
-	return (gui(meta, "rra\n"));
+	gui(meta, "rra\n");
 }
 
-int	rrb(t_meta *meta)
+void	rrb(t_meta *meta)
 {
 	rr(meta->stack_b);
-	return (gui(meta, "rrb\n"));
+	gui(meta, "rrb\n");
 }
 
-int	rrr(t_meta *meta)
+void	rrr(t_meta *meta)
 {
 	rr(meta->stack_a);
 	rr(meta->stack_b);
-	return (gui(meta, "rrr\n"));
+	gui(meta, "rrr\n");
 }

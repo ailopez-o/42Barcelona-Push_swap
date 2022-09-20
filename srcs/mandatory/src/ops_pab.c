@@ -12,7 +12,7 @@
 #include "../inc/defines.h"
 #include "../inc/gui_utils.h"
 
-int	pa(t_meta *meta)
+void	pa(t_meta *meta)
 {
 	t_stack	*stack_orgtop;
 	t_stack	**org;
@@ -21,7 +21,7 @@ int	pa(t_meta *meta)
 	org = &meta->stack_b;
 	dest = &meta->stack_a;
 	if (*org == NULL)
-		return (1);
+		return ;
 	stack_orgtop = (*org)->next;
 	if (*dest == NULL)
 		(*org)->next = NULL;
@@ -35,10 +35,9 @@ int	pa(t_meta *meta)
 	if (*org)
 		(*org)->pre = NULL;
 	gui(meta, "pa\n");
-	return (1);
 }
 
-int	pb(t_meta *meta)
+void	pb(t_meta *meta)
 {
 	t_stack	*stack_orgtop;
 	t_stack	**org;
@@ -47,7 +46,7 @@ int	pb(t_meta *meta)
 	org = &meta->stack_a;
 	dest = &meta->stack_b;
 	if (*org == NULL)
-		return (1);
+		return ;
 	stack_orgtop = (*org)->next;
 	if (*dest == NULL)
 		(*org)->next = NULL;
@@ -61,5 +60,4 @@ int	pb(t_meta *meta)
 	if (*org)
 		(*org)->pre = NULL;
 	gui(meta, "pb\n");
-	return (1);
 }

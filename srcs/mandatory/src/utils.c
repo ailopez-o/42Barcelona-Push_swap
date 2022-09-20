@@ -39,34 +39,6 @@ int	get_min(t_stack *stack)
 	return (min);
 }
 
-int	get_max_index(t_stack *stack)
-{
-	int	max;
-
-	max = stack->index;
-	while (stack)
-	{
-		if (max < stack->index)
-			max = stack->index;
-		stack = stack->next;
-	}
-	return (max);
-}
-
-int	get_min_index(t_stack *stack)
-{
-	int	min;
-
-	min = stack->index;
-	while (stack)
-	{
-		if (min > stack->index)
-			min = stack->index;
-		stack = stack->next;
-	}
-	return (min);
-}
-
 int	are_negatives(t_stack *stack)
 {
 	while (stack)

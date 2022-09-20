@@ -14,6 +14,34 @@
 #include "../inc/utils.h"
 #include "../inc/sort.h"
 
+int	get_max_index(t_stack *stack)
+{
+	int	max;
+
+	max = stack->index;
+	while (stack)
+	{
+		if (max < stack->index)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
+}
+
+int	get_min_index(t_stack *stack)
+{
+	int	min;
+
+	min = stack->index;
+	while (stack)
+	{
+		if (min > stack->index)
+			min = stack->index;
+		stack = stack->next;
+	}
+	return (min);
+}
+
 /*
 case1 : [2,1,3]->sa->[1,2,3].
 case2 : [3,2,1]->sa->[2,3,1]->rra->[1,2,3].
@@ -34,19 +62,13 @@ void	sort_three_stack_a(t_meta *meta)
 		sa(meta);
 	if (stack->index == index + 2 && stack->next->index == index + 1 && \
 		stack->next->next->index == index)
-	{
-		sa(meta);
-		rra(meta);
-	}
+		sa_ra(meta, 1);
 	if (stack->index == index + 2 && stack->next->index == index && \
 		stack->next->next->index == index + 1)
 		ra(meta);
 	if (stack->index == index && stack->next->index == index + 2 && \
 		stack->next->next->index == index + 1)
-	{
-		sa(meta);
-		ra(meta);
-	}
+		sa_ra(meta, 0);
 	if (stack->index == index + 1 && stack->next->index == index + 2 && \
 		stack->next->next->index == index)
 		rra(meta);

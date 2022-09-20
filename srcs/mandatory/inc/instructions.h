@@ -12,16 +12,17 @@
 #ifndef INSTRUCTIONS_H
 # define INSTRUCTIONS_H
 
-int	sa(t_meta *meta);
-int	sb(t_meta *meta);
-int	ss(t_meta *meta);
-int	pa(t_meta *meta);
-int	pb(t_meta *meta);
-int	ra(t_meta *meta);
-int	rb(t_meta *meta);
-int	rr(t_meta *meta);
-int	rra(t_meta *meta);
-int	rrb(t_meta *meta);
-int	rrr(t_meta *meta);
+void	sa(t_meta *meta);
+void	sb(t_meta *meta);
+void	ss(t_meta *meta);
+void	pa(t_meta *meta);
+void	pb(t_meta *meta);
+void	ra(t_meta *meta);
+void	rb(t_meta *meta);
+void	rr(t_meta *meta);
+void	rra(t_meta *meta);
+void	rrb(t_meta *meta);
+void	rrr(t_meta *meta);
+void	sa_ra(t_meta *meta, int reverse);
 
 #endif
