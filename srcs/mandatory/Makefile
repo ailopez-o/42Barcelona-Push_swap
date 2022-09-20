@@ -76,7 +76,15 @@ INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
 
 OBJF		=	.cache_exists
 
-all:	$(NAME)
+all:	makelibs
+		@echo "$(MAGENTA)🔸 MAKE PROGRAM 🔸$(DEF_COLOR)"
+		@$(MAKE) $(NAME)
+
+makelibs:
+	@echo "$(MAGENTA)🔸 MAKE LIBS 🔸$(DEF_COLOR)"
+	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) -C $(MINILIBX_DIR)
+
 			
 -include 	${DEPS}
 $(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
@@ -90,7 +98,7 @@ $(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 bonus:		
 			@$(MAKE) all
 			
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS) | $(OBJF)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "🍩 $(YELLOW)Compiling: $< $(DEF_COLOR)"
 			$(CC) $(CFLAGS) $(FSANITIZE) -MMD -c $< -o $@
 
@@ -106,6 +114,7 @@ $(MINILIBX):
 	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"	
 		
 clean:
+			@echo "$(MAGENTA)🔸 CLEAN 🔸$(DEF_COLOR)"
 			@make clean -sC $(LIBFT_DIR)
 			@echo "$(CYAN)Libft object and dependency files cleaned.$(DEF_COLOR)"
 			@make clean -C $(MINILIBX_DIR)
