@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/defines.h"
-#include "../inc/gui_utils.h"
 
 void	pa(t_meta *meta)
 {
@@ -34,7 +33,6 @@ void	pa(t_meta *meta)
 	*org = stack_orgtop;
 	if (*org)
 		(*org)->pre = NULL;
-	gui(meta, "pa\n");
 }
 
 void	pb(t_meta *meta)
@@ -59,5 +57,4 @@ void	pb(t_meta *meta)
 	*org = stack_orgtop;
 	if (*org)
 		(*org)->pre = NULL;
-	gui(meta, "pb\n");
 }

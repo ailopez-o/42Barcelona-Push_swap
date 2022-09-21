@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 #include "../inc/defines.h"
 #include "../inc/lst_utils.h"
-#include "../inc/gui_utils.h"
 
 static void	rr(t_stack *stack)
 {
@@ -42,18 +41,15 @@ static void	rr(t_stack *stack)
 void	rra(t_meta *meta)
 {
 	rr(meta->stack_a);
-	gui(meta, "rra\n");
 }
 
 void	rrb(t_meta *meta)
 {
 	rr(meta->stack_b);
-	gui(meta, "rrb\n");
 }
 
 void	rrr(t_meta *meta)
 {
 	rr(meta->stack_a);
 	rr(meta->stack_b);
-	gui(meta, "rrr\n");
 }

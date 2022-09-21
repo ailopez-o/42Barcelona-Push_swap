@@ -13,7 +13,7 @@
 
 #Variables
 
-NAME		:= push_swap
+NAME		:= checker
 
 SRC_DIR		:= src/
 OBJ_DIR		:= obj/
@@ -52,21 +52,11 @@ WHITE = \033[0;97m
 SRC_FILES	=	main \
 				lists \
 				lists_utils \
-				print \
+				parser \
 				ops_rab \
 				ops_rrab \
 				ops_sab \
 				ops_pab \
-				gui \
-				gui_utils \
-				gui_init \
-				parser \
-				draw \
-				sort \
-				sort_utils \
-				sort_slot \
-				sort_slot_utils \
-				utils \
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -91,7 +81,7 @@ $(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 			make -sC $(LIBFT_DIR)			
 			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
 			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
-			@echo "$(GREEN)✨ push_swap compiled!$(DEF_COLOR)"
+			@echo "$(GREEN)✨ checker compiled!$(DEF_COLOR)"
 
 			
 
@@ -120,11 +110,11 @@ clean:
 			@make clean -C $(MINILIBX_DIR)
 			@echo "$(CYAN)Minilibx object files cleaned.$(DEF_COLOR)"	
 			$(RM) -rf $(OBJ_DIR)
-			@echo "$(CYAN)push_swap object files cleaned!$(DEF_COLOR)"
+			@echo "$(CYAN)checker object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			$(RM) -f $(NAME)
-			@echo "$(CYAN)push_swap executable files cleaned!$(DEF_COLOR)"			
+			@echo "$(CYAN)checker executable files cleaned!$(DEF_COLOR)"			
 			$(RM) -f $(MINILIBX_DIR)libmlx.a
 			@echo "$(CYAN)libmlx.a lib cleaned!$(DEF_COLOR)"			
 			$(RM) -f $(LIBFT_DIR)libft.a

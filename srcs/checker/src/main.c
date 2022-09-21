@@ -12,23 +12,9 @@
 #include "../inc/defines.h"
 #include "../../../lib/libft/libft.h"
 #include "../inc/lst_utils.h"
-#include "../inc/print.h"
-#include "../inc/gui.h"
-#include "../inc/utils.h"
 #include "../inc/instructions.h"
-#include "../inc/sort.h"
-#include "../inc/sort_utils.h"
-#include "../inc/gui_utils.h"
 #include "../inc/parser.h"
 #include <stddef.h>
-
-void	console(t_meta *meta)
-{
-	meta->print_ops = 1;
-	sort(meta);
-	stack_lstfree(&meta->stack_a);
-	stack_lstfree(&meta->stack_b);
-}
 
 void	error(char	*str)
 {
@@ -46,20 +32,12 @@ int	main(int argv, char **argc)
 	meta.gui = 0;
 	meta.print_ops = 1;
 	meta.print_stack = 0;
-	if (!ft_strncmp(argc[1], "-g", 2))
-	{
-		meta.gui = 1;
-		argc++;
-		gui_init(&meta);
-	}
 	if (stack_ini(&meta, argc) == 0)
 		error ("Error");
 	if (stack_is_sorted(meta.stack_a))
 		return (0);
 	index_list(meta.stack_a);
-	if (meta.gui)
-		gui_loop(&meta);
-	else
-		console(&meta);
+	stack_lstfree(&meta.stack_a);
+	stack_lstfree(&meta.stack_b);	
 	return (0);
 }
