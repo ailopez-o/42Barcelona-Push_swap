@@ -28,6 +28,12 @@ void	get_instructions(t_meta *meta)
 	char *op;
 
 	op = get_next_line(1);
+	while (op)
+	{
+
+		
+
+	}
 
 
 }
