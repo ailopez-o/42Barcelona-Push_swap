@@ -23,6 +23,15 @@ void	error(char	*str)
 	exit (0);
 }
 
+void	get_instructions(t_meta *meta)
+{
+	char *op;
+
+	op = get_next_line(1);
+
+
+}
+
 int	main(int argv, char **argc)
 {
 	t_meta	meta;
