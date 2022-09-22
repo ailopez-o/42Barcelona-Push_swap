@@ -1,5 +1,6 @@
 *.d
 push_swap
+my_checker
 .vscode/
 *.o
 obj/
