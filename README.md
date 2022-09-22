@@ -36,7 +36,10 @@ $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./my_checker $ARG
 OK
 $>
 ```
-
+### Execution example whith GUI (press S to start sorting)
+```
+$>ARG="-g 4 67 3 87 23"; ./push_swap $ARG
+```
 
 
 All functions are created in accordance with Norm.
