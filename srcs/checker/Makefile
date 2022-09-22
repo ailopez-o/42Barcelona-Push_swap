@@ -13,7 +13,7 @@
 
 #Variables
 
-NAME		:= checker
+NAME		:= my_checker
 
 SRC_DIR		:= src/
 OBJ_DIR		:= obj/
@@ -57,6 +57,7 @@ SRC_FILES	=	main \
 				ops_rrab \
 				ops_sab \
 				ops_pab \
+				exec_ops
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -73,13 +74,12 @@ all:	makelibs
 makelibs:
 	@echo "$(MAGENTA)🔸 MAKE LIBS 🔸$(DEF_COLOR)"
 	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) -C $(MINILIBX_DIR)
 
 			
 -include 	${DEPS}
-$(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
+$(NAME):	$(LIBFT) $(OBJ)
 			make -sC $(LIBFT_DIR)			
-			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
+			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(OPENGL) -o $(NAME)		
 			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
 			@echo "$(GREEN)✨ checker compiled!$(DEF_COLOR)"
 

@@ -22,6 +22,7 @@ static void	s(t_stack *stack)
 	num = stack->next->num;
 	index = stack->next->index;
 	stack->next->num = stack->num;
+	stack->next->index = stack->index;
 	stack->num = num;
 	stack->index = index;
 }

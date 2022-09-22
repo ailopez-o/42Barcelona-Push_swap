@@ -33,10 +33,13 @@ WHITE = \033[0;97m
 
 
 
-all:	
-	make -C $(PUSH_SWAP_DIR)
+all:
 	rm -f push_swap
+	make -C $(PUSH_SWAP_DIR)
 	cp $(PUSH_SWAP_DIR)push_swap push_swap
+	rm -f my_checker
+	make -C $(CHECKER_DIR)
+	cp $(CHECKER_DIR)my_checker my_checker
 
 			
 clean:

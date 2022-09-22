@@ -63,6 +63,5 @@ int	stack_ini(t_meta *meta, char **values)
 	if (duplicate_values(meta->stack_a))
 		return (0);
 	meta->stack_size = stack_lstsize(meta->stack_a);
-	//get_values(meta);
 	return (1);
 }
