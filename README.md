@@ -11,13 +11,33 @@
 ## Algorithmic project
 
 <p align="center">
-	<img src="https://github.com/ailopez-o/42Barcelona-push_swap/blob/main/img/push_swap.png" />
+	<img src="https://github.com/ailopez-o/42Barcelona-push_swap/blob/main/img/push_swap_2.png" />
 </p>
 
 The main goal is to sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions. To succeed you’ll have to manipulate various
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting.
+
+Pull files ↙️
+```bash
+git clone --recursive https://github.com/ailopez-o/42Barcelona-Push_swap.git
+```
+Compile both push_swap & checker ↙️
+
+```bash
+$ make
+```
+### Execution example
+```
+$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+6
+$>ARG="4 67 3 87 23"; ./push_swap $ARG | ./my_checker $ARG
+OK
+$>
+```
+
+
 
 All functions are created in accordance with Norm.
 
