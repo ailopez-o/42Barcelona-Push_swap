@@ -76,22 +76,33 @@ INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
 
 OBJF		=	.cache_exists
 
-all:	makelibs
-		@echo "$(MAGENTA)🔸 MAKE PROGRAM 🔸$(DEF_COLOR)"
+all:	makelibs	
 		@$(MAKE) $(NAME)
+		@echo " "		
 
 makelibs:
+	@echo " "
 	@echo "$(MAGENTA)🔸 MAKE LIBS 🔸$(DEF_COLOR)"
+	@echo " "
+	@echo "$(GREEN)Libft lib...$(DEF_COLOR)"	
 	@$(MAKE) -C $(LIBFT_DIR)
+	@echo " "
+	@echo "$(GREEN)Minilibx lib...$(DEF_COLOR)"	
 	@$(MAKE) -C $(MINILIBX_DIR)
+	@echo " "	
 
 			
 -include 	${DEPS}
-$(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
-			make -sC $(LIBFT_DIR)			
-			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
+$(NAME):	$(OBJ) Makefile
+			@echo " "
+			@echo "$(MAGENTA)🔸 MAKE PROGRAM 🔸$(DEF_COLOR)"
+			@echo " "			
+			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)
+			@echo " "
 			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
+			@echo " "
 			@echo "$(GREEN)✨ push_swap compiled!$(DEF_COLOR)"
+			@echo " "
 
 			
 
@@ -114,7 +125,9 @@ $(MINILIBX):
 	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"	
 		
 clean:
+			@echo " "
 			@echo "$(MAGENTA)🔸 CLEAN 🔸$(DEF_COLOR)"
+			@echo " "
 			@make clean -sC $(LIBFT_DIR)
 			@echo "$(CYAN)Libft object and dependency files cleaned.$(DEF_COLOR)"
 			@make clean -C $(MINILIBX_DIR)

@@ -68,20 +68,26 @@ INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
 OBJF		=	.cache_exists
 
 all:	makelibs
-		@echo "$(MAGENTA)🔸 MAKE PROGRAM 🔸$(DEF_COLOR)"
 		@$(MAKE) $(NAME)
+		@echo " "
 
 makelibs:
+	@echo " "
 	@echo "$(MAGENTA)🔸 MAKE LIBS 🔸$(DEF_COLOR)"
+	@echo " "
+	@echo "$(GREEN)Libft lib...$(DEF_COLOR)"	
 	@$(MAKE) -C $(LIBFT_DIR)
-
-			
+	
 -include 	${DEPS}
-$(NAME):	$(LIBFT) $(OBJ)
-			make -sC $(LIBFT_DIR)			
+$(NAME):	$(OBJ) Makefile
+			@echo " "
+			@echo "$(MAGENTA)🔸 MAKE PROGRAM 🔸$(DEF_COLOR)"
+			@echo " "		
 			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(OPENGL) -o $(NAME)		
-			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
+			@echo "👉 $(CYAN)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) -o $(NAME)$(DEF_COLOR)"
+			@echo " "
 			@echo "$(GREEN)✨ checker compiled!$(DEF_COLOR)"
+			@echo " "
 
 			
 
@@ -104,7 +110,9 @@ $(MINILIBX):
 	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"	
 		
 clean:
+			@echo " "
 			@echo "$(MAGENTA)🔸 CLEAN 🔸$(DEF_COLOR)"
+			@echo " "			
 			@make clean -sC $(LIBFT_DIR)
 			@echo "$(CYAN)Libft object and dependency files cleaned.$(DEF_COLOR)"
 			@make clean -C $(MINILIBX_DIR)
@@ -123,7 +131,7 @@ fclean:		clean
 
 re:			fclean 
 			@$(MAKE)	
-			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for checker!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDE) | grep -v Norme -B1 || true
