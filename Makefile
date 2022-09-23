@@ -50,10 +50,12 @@ all:
 clean:
 		rm -f push_swap
 		@make clean -sC $(PUSH_SWAP_DIR)
+		@make clean -sC $(CHECKER_DIR)		
 
 fclean:		
 		rm -f push_swap
 		@make fclean -sC $(PUSH_SWAP_DIR)
+		@make fclean -sC $(CHECKER_DIR)
 
 
 re:			fclean 
