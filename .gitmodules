@@ -10,3 +10,9 @@
 [submodule "testers/lmalki"]
 	path = testers/lmalki
 	url = https://github.com/lmalki-h/push_swap_tester.git
+[submodule "visual_checker/libs/libft"]
+	path = visual_checker/libs/libft
+	url = git@github.com:ailopez-o/42Barcelona-Libft.git
+[submodule "pro_checker"]
+	path = pro_checker
+	url = git@github.com:ailopez-o/42Barcelona-PushSwap-ProChecker.git
