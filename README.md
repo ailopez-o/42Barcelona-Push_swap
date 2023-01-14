@@ -1,4 +1,10 @@
-# 42-push_swap
+<h1 align="center">
+	PUSH-SWAP
+</h1>
+
+<p align="center">
+	<b><i>Algorithmic project</i></b><br>
+</p>
 
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/ailopez-o/42Barcelona-push_swap?color=lightblue" />
@@ -8,7 +14,6 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ailopez-o/42Barcelona-push_swap?color=green" />
 </p>
 
-## Algorithmic project
 
 <p align="center">
 	<img src="https://github.com/ailopez-o/42Barcelona-push_swap/blob/main/img/push_swap_2.png" />
