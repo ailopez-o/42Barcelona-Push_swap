@@ -6,7 +6,7 @@
 /*   By: aitoraudicana <aitoraudicana@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:41:33 by aitoraudica       #+#    #+#             */
-/*   Updated: 2022/07/29 17:51:11 by aitoraudica      ###   ########.fr       */
+/*   Updated: 2023/01/15 12:56:09 by aitoraudica      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define STACKB	1
 
 # define MIN_BLOCK_SIZE  25
-# define MAX_BLOCK_SIZE  45
+# define MAX_BLOCK_SIZE  62
 
 # define ROJO 		0xc1272d
 # define VERDE		0x33cc55
